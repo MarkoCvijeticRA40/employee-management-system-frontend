@@ -1,0 +1,80 @@
+<body>
+<form class="example-form">
+    <mat-form-field class="example-full-width">
+      <mat-label>Email</mat-label>
+      <input type="email" matInput placeholder="Ex. marko@example.com" name="email" [(ngModel)]="email">
+    </mat-form-field>
+  </form>
+  
+<form class="example-form1">
+    <mat-form-field class="example-full-width">
+        <mat-label>Name</mat-label>
+        <input type="Name" matInput placeholder="Ex. Marko" name="name" [(ngModel)]="name">
+    </mat-form-field>
+</form>
+
+<form class="example-form2">
+    <mat-form-field class="example-full-width">
+        <mat-label>Lastname</mat-label>
+        <input type="Surname" matInput placeholder="Ex. Cvijetic" name="surname" [(ngModel)]="lastname">
+    </mat-form-field>
+</form>
+
+<mat-form-field class="example-form3">
+    <mat-label>Enter a date range</mat-label>
+    <mat-date-range-input [rangePicker]="picker">
+      <input matStartDate placeholder="Start date" [(ngModel)]="startDate" [max]="maxDate" name="startDate">
+      <input matEndDate placeholder="End date" [(ngModel)]="endDate" [max]="maxDate" name="endDate">
+    </mat-date-range-input>
+    <mat-hint>MM/DD/YYYY – MM/DD/YYYY</mat-hint>
+    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-date-range-picker #picker></mat-date-range-picker>
+  </mat-form-field>
+  
+  
+
+<br>
+
+<div class="button-container">
+    <button mat-raised-button color="primary" (click)="search()">Search</button>
+</div>
+
+<!-- search-users.component.html -->
+<div class="table-container">
+    <table mat-table class="mat-table">
+      <!-- Table Headers -->
+      <ng-container matColumnDef="name">
+        <th mat-header-cell *matHeaderCellDef>Name</th>
+      </ng-container>
+  
+      <ng-container matColumnDef="lastname">
+        <th mat-header-cell *matHeaderCellDef>Lastname</th>
+      </ng-container>
+  
+      <ng-container matColumnDef="email">
+        <th mat-header-cell *matHeaderCellDef>Email</th>
+      </ng-container>
+  
+      <ng-container matColumnDef="date">
+        <th mat-header-cell *matHeaderCellDef>Date</th>
+      </ng-container>
+
+      <ng-container matColumnDef="addresses">
+        <th mat-header-cell *matHeaderCellDef>Address</th>
+      </ng-container>
+
+      <ng-container matColumnDef="phoneNum">
+        <th mat-header-cell *matHeaderCellDef>Phone number</th>
+      </ng-container>
+      
+      <ng-container matColumnDef="title">
+        <th mat-header-cell *matHeaderCellDef>Title</th>
+      </ng-container>
+  
+      <!-- Table Rows -->
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    </table>
+</div>
+</body>
+  
+

@@ -1,0 +1,39 @@
+<form>
+    <label for="admin-email-address">Admin Email Address:</label>
+    <input type="text" [(ngModel)]="createRootCertificate.adminEmailAddress" id="admin-email-address" name="admin-email-address"><br><br>
+  
+    <label for="start-date">Start Date:</label>
+    <input   [(ngModel)]="createRootCertificate.start" type="date" id="start-date" name="start-date"><br><br>
+  
+    <label for="end-date">End Date:</label>
+    <input [(ngModel)]="createRootCertificate.end" type="date" id="end-date" name="end-date"><br><br>
+  
+    <label for="key-usages">Key Usages:</label>
+    <select id="key-usages" name="key-usages" multiple [(ngModel)]="createRootCertificate.keyUsages">
+      <option value="DIGITAL_SIGNATURE">Digital Signature</option>
+      <option value="NON_REPUDIATION">Non-repudiation</option>
+      <option value="KEY_ENCIPHERMENT">Key encipherment</option>
+      <option value="DATA_ENCIPHERMENT">Data encipherment</option>
+      <option value="KEY_AGREEMENT">Key agreement</option>
+      <option value="CERTIFICATE_SIGN">Certificate signing</option>
+      <option value="CRL_SIGN">CRL signing</option>
+      <option value="ENCIPHER_ONLY">Encipher only</option>
+      <option value="DECIPHER_ONLY">Decipher only</option>
+    </select><br><br>
+  
+    <label for="extended-key-usages">Extended Key Usages:</label>
+    <select id="extended-key-usages" multiple [(ngModel)]="createRootCertificate.extendedKeyUsages" name="extended-key-usages" multiple>
+      <option value="SERVER_AUTH">Server authentication</option>
+      <option value="CLIENT_AUTH">Client authentication</option>
+      <option value="CODE_SIGNING">Code signing</option>
+      <option value="EMAIL_PROTECTION">Email protection</option>
+      <option value="TIME_STAMPING">Time stamping</option>
+      <option value="OCSP_SIGNING">OCSP signing</option>
+      <option value="IPSEC_END_SYSTEM">IPsec end system</option>
+      <option value="IPSEC_TUNNEL">IPsec tunnel</option>
+      <option value="IPSEC_USER">IPsec user</option>
+      <option value="ANY_EXTENDED_KEY_USAGE">Any extended key usage</option>
+    </select><br><br>
+  
+    <input type="submit" (click)="create()" value="Create">
+  </form>

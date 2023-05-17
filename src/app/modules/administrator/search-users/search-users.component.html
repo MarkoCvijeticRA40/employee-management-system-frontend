@@ -23,57 +23,66 @@
 <mat-form-field class="example-form3">
     <mat-label>Enter a date range</mat-label>
     <mat-date-range-input [rangePicker]="picker">
-      <input matStartDate placeholder="Start date" [(ngModel)]="startDate" [max]="maxDate" name="startDate">
-      <input matEndDate placeholder="End date" [(ngModel)]="endDate" [max]="maxDate" name="endDate">
+      <input matStartDate placeholder="Start date" [(ngModel)]="startDate" name="startDate">
+      <input matEndDate placeholder="End date" [(ngModel)]="endDate" name="endDate">
     </mat-date-range-input>
-    <mat-hint>MM/DD/YYYY – MM/DD/YYYY</mat-hint>
     <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
     <mat-date-range-picker #picker></mat-date-range-picker>
   </mat-form-field>
-  
-  
-
 <br>
 
 <div class="button-container">
-    <button mat-raised-button color="primary" (click)="search()">Search</button>
+    <button mat-raised-button color="primary" (click)=" createUser()">Search</button>
 </div>
 
 <!-- search-users.component.html -->
 <div class="table-container">
-    <table mat-table class="mat-table">
-      <!-- Table Headers -->
+  <div class="table-container">
+    <table mat-table class="mat-table" [dataSource]="engineers">
+      <!-- Table Columns -->
       <ng-container matColumnDef="name">
         <th mat-header-cell *matHeaderCellDef>Name</th>
+        <td mat-cell *matCellDef="let engineer">{{ engineer.name }}</td>
       </ng-container>
   
       <ng-container matColumnDef="lastname">
         <th mat-header-cell *matHeaderCellDef>Lastname</th>
+        <td mat-cell *matCellDef="let engineer">{{ engineer.surname }}</td>
       </ng-container>
   
       <ng-container matColumnDef="email">
         <th mat-header-cell *matHeaderCellDef>Email</th>
+        <td mat-cell *matCellDef="let engineer">{{ engineer.email }}</td>
       </ng-container>
   
       <ng-container matColumnDef="date">
         <th mat-header-cell *matHeaderCellDef>Date</th>
-      </ng-container>
-
-      <ng-container matColumnDef="addresses">
-        <th mat-header-cell *matHeaderCellDef>Address</th>
-      </ng-container>
-
-      <ng-container matColumnDef="phoneNum">
-        <th mat-header-cell *matHeaderCellDef>Phone number</th>
-      </ng-container>
-      
-      <ng-container matColumnDef="title">
-        <th mat-header-cell *matHeaderCellDef>Title</th>
+        <td mat-cell *matCellDef="let engineer">{{ formatDate(engineer.startOfWork) }}</td>
       </ng-container>
   
-      <!-- Table Rows -->
+      <ng-container matColumnDef="addresses">
+        <th mat-header-cell *matHeaderCellDef>Address</th>
+        <td mat-cell *matCellDef="let engineer">{{ engineer.address.country }},{{ engineer.address.city }},{{ engineer.address.street }},{{ engineer.address.number }}</td>
+      </ng-container>
+  
+      <ng-container matColumnDef="phoneNum">
+        <th mat-header-cell *matHeaderCellDef>Phone number</th>
+        <td mat-cell *matCellDef="let engineer">{{ engineer.phoneNum }}</td>
+      </ng-container>
+  
+      <ng-container matColumnDef="title">
+        <th mat-header-cell *matHeaderCellDef>Title</th>
+        <td mat-cell *matCellDef="let engineer">{{ engineer.title }}</td>
+      </ng-container>
+  
+      <!-- Table Header Row -->
       <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  
+      <!-- Table Row -->
+      <tr mat-row *matRowDef="let engineer; columns: displayedColumns;"></tr>
     </table>
+  </div>
+  
 </div>
 </body>
   

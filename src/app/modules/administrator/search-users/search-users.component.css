@@ -1,0 +1,66 @@
+/* search-users.component.css */
+body {
+    background-color:#f0f0f0 ;
+  }
+  
+  .mat-table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  .mat-table th,
+  .mat-table td {
+    border: 1px solid black;
+    padding: 8px;
+  }
+  
+  .mat-table th {
+    font-weight: bold;
+  }
+  
+  .mat-table tr:nth-child(even) {
+    background-color: #f2f2f2;
+  }
+  
+  .mat-table tr:hover {
+    background-color: #ddd;
+  }
+  
+  .example-form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .example-form1 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .example-form2 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .example-form3 {
+    margin-left: 660px; /* Adjust the value as needed */
+  }
+  
+  .example-form4 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .button-container {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+  }
+  
+  .button-container button {
+    margin-left: 660px; /* Adjust the value as needed */
+  }
+  

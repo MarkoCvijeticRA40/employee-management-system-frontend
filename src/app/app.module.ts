@@ -7,17 +7,27 @@ import { MaterialModule } from "./material/material.module";
 import { PagesModule } from "./modules/pages/pages.module";
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatTableModule } from "@angular/material/table";
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HomeComponent } from "./modules/pages/home/home.component";
-import { CreateRootCertificateComponent } from "./modules/pages/create-root-certificate/create-root-certificate.component";
-import { MatOptionModule } from "@angular/material/core";
+import { MatNativeDateModule, MatOptionModule } from "@angular/material/core";
+import { SearchUsersComponent } from './modules/administrator/search-users/search-users.component';
+import { MatDatepickerModule } from "@angular/material/datepicker";
+import { CommonModule, DatePipe } from "@angular/common";
+import { MatFormFieldModule } from "@angular/material/form-field";
+import { MatInputModule } from "@angular/material/input";
+import { MatSelectModule } from "@angular/material/select";
+import { MatIconModule } from "@angular/material/icon";
+import { MatSidenavModule } from "@angular/material/sidenav";
+import { MatListModule } from "@angular/material/list";
+import { RouterModule } from "@angular/router";
+import { MatRadioModule } from "@angular/material/radio";
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    CreateRootCertificateComponent,
     HomeComponent,
+    SearchUsersComponent,
   ],
   imports: [
     BrowserModule,
@@ -28,9 +38,30 @@ import { MatOptionModule } from "@angular/material/core";
     //PagesModule,
     MatTableModule,
     FormsModule,
+    MatOptionModule,
+    MatDatepickerModule,
+    CommonModule,
+    MatTableModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatSelectModule,
+    MaterialModule,
+    ReactiveFormsModule,
+    FormsModule,
+    MatFormFieldModule,
+    MatSelectModule,
+    MatNativeDateModule,
+    MatIconModule,
+    MatSidenavModule,
+    MatListModule,
+    RouterModule,
+    MatRadioModule,
+    MatDatepickerModule,
     MatOptionModule
   ],
-  providers: [],
+  providers: [
+    DatePipe
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

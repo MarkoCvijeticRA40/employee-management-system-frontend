@@ -1,15 +1,15 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
-import { Route, Router } from '@angular/router';
+import { Router } from '@angular/router';
 import { User } from 'src/app/model/user';
 import { UserService } from 'src/app/service/user.service';
 
 @Component({
-  selector: 'app-change-password',
-  templateUrl: './change-password.component.html',
-  styleUrls: ['./change-password.component.css']
+  selector: 'app-first-login',
+  templateUrl: './first-login.component.html',
+  styleUrls: ['./first-login.component.css']
 })
-export class ChangePasswordComponent implements OnInit {
+export class FirstLoginComponent implements OnInit {
 
   constructor(private userService : UserService,private router : Router) { }
 
@@ -29,9 +29,10 @@ export class ChangePasswordComponent implements OnInit {
     if (this.isInputValid()) {
       if (this.isPassConfirmed()) {
         this.currentUser.password = this.password;
+        this.currentUser.accountEnabled = true;
         this.userService.updateUser(this.currentUser).subscribe(res => {
           alert("You have changed password successfully!");
-            this.GoBack();
+            this.router.navigate(['/home/edit/profile']);
         }) 
       } 
       else {
@@ -48,7 +49,8 @@ export class ChangePasswordComponent implements OnInit {
   }
 
   public GoBack() {
-    this.router.navigate(['/home/edit/profile']);
+    //na login kad se napravi
+    this.router.navigate(['/no/access']);
   }
 
   private isInputValid(): boolean {
@@ -68,3 +70,4 @@ export class ChangePasswordComponent implements OnInit {
     Validators.required,
   ])
 }
+

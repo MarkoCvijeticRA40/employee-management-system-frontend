@@ -28,8 +28,9 @@ import { EditProfileComponent } from './modules/administrator/edit-profile/edit-
 import { RegisterAdministratorComponent } from './modules/administrator/register-administrator/register-administrator.component';
 import { ChangePasswordComponent } from './modules/administrator/change-password/change-password.component';
 import { CdkTableModule } from '@angular/cdk/table';
-
-
+import { HomePageComponent } from './modules/administrator/home-page/home-page.component';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { FirstLoginComponent } from './modules/administrator/first-login/first-login.component';
 
 @NgModule({
   declarations: [
@@ -42,6 +43,8 @@ import { CdkTableModule } from '@angular/cdk/table';
     EditProfileComponent,
     RegisterAdministratorComponent,
     ChangePasswordComponent,
+    HomePageComponent,
+    FirstLoginComponent,
   ],
   imports: [
     BrowserModule,
@@ -77,6 +80,8 @@ import { CdkTableModule } from '@angular/cdk/table';
     CdkTableModule,
     MatFormFieldModule,
     MatInputModule,
+    MatToolbarModule,
+    ReactiveFormsModule,
   ],
   providers: [
     DatePipe

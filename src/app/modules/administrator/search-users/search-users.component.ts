@@ -31,7 +31,7 @@ export class SearchUsersComponent implements OnInit {
     this.startDate = new Date();
     this.endDate = new Date();
     this.endDate.setDate(this.endDate.getDate() + 1);
-    this.userService.findByTitle("Engineer").subscribe(res => {
+    this.userService.findByRoleName("Software engineer\n").subscribe(res => {
       this.engineers = res;
         this.allEngineers = this.engineers;
     });

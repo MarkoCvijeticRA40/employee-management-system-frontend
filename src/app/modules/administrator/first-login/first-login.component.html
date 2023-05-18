@@ -1,0 +1,21 @@
+<table id="table1" class="mat-table">
+    <tr>
+      <td>New password:</td>
+      <td><mat-form-field appearance="outline"><input matInput type="password" [(ngModel)]="password" [formControl]="requiredConfirmationPasswordControl"></mat-form-field></td>
+    </tr>
+  
+    <tr>
+      <td>Confirm:</td>
+      <td><mat-form-field appearance="outline"><input matInput type="password" [(ngModel)]="confirmationPass" [formControl]="requiredPasswordControl"></mat-form-field></td>
+    </tr>
+  
+    <tr>
+      <td>Back</td>
+      <td><button mat-raised-button color="primary" (click)="GoBack()">Back</button></td>
+    </tr>
+  
+    <tr>
+      <td>Save</td>
+      <td><button mat-raised-button color="primary" (click)="UpdatePassword()">Save</button></td>
+    </tr>
+  </table>

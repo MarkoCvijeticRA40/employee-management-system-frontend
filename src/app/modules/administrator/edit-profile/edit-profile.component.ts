@@ -21,7 +21,7 @@ export class EditProfileComponent implements OnInit {
   }
 
   public ChangePassword() {
-    this.router.navigate(['administrator/change/password']);
+    this.router.navigate(['/home/change/password']);
   }
 
   public updateUser() {

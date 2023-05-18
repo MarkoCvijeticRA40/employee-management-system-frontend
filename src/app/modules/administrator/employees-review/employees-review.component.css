@@ -3,7 +3,7 @@ body {
     justify-content: center;
     align-items: center;
     height: 100vh;
-    background-color: #f0f0f0;
+    
   }
   
   .table-container {
@@ -27,15 +27,7 @@ body {
   .mat-table th {
     font-weight: bold;
   }
-  
-  .mat-table tr:nth-child(even) {
-    background-color: #f2f2f2;
-  }
-  
-  .mat-table tr:hover {
-    background-color: #ddd;
-  }
-  
+   
   .table-title {
     margin-left: 0px; /* Adjust the value as needed */
   }

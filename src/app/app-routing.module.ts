@@ -22,8 +22,8 @@ const routes: Routes = [
       { path: "projects/review", component: ProjectsReviewComponent },
       { path: "project/create", component: CreateProjectComponent },
       { path: "edit/profile", component: EditProfileComponent },
-      { path: "create/administrator", component: RegisterAdministratorComponent }
-      
+      { path: "create/administrator", component: RegisterAdministratorComponent },
+      { path: "create/project" , component : CreateProjectComponent },    
     ],
   },
   { path: "first/login", component: FirstLoginComponent }, // This route is accessible regardless of the user's account status

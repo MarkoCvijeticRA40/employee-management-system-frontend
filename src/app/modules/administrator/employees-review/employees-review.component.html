@@ -1,0 +1,58 @@
+<body>
+    <div class="container">
+      <h1 class="table-title">Employees</h1>
+      <div class="table-container">
+        <table mat-table class="mat-table" [dataSource]="employees">
+          <!-- Table Columns -->
+          <ng-container matColumnDef="name">
+            <th mat-header-cell *matHeaderCellDef>Name</th>
+            <td mat-cell *matCellDef="let employee">{{ employee.name }}</td>
+          </ng-container>
+  
+          <ng-container matColumnDef="lastname">
+            <th mat-header-cell *matHeaderCellDef>Lastname</th>
+            <td mat-cell *matCellDef="let employee">{{ employee.surname }}</td>
+          </ng-container>
+  
+          <ng-container matColumnDef="email">
+            <th mat-header-cell *matHeaderCellDef>Email</th>
+            <td mat-cell *matCellDef="let employee">{{ employee.email }}</td>
+          </ng-container>
+  
+          <ng-container matColumnDef="date">
+            <th mat-header-cell *matHeaderCellDef>Date</th>
+            <td mat-cell *matCellDef="let employee">{{ formatDate(employee.startOfWork) }}</td>
+          </ng-container>
+  
+          <ng-container matColumnDef="addresses">
+            <th mat-header-cell *matHeaderCellDef>Address</th>
+            <td mat-cell *matCellDef="let employee">{{ employee.address.country }},{{ employee.address.city }},{{ employee.address.street }},{{ employee.address.number }}</td>
+          </ng-container>
+  
+          <ng-container matColumnDef="phoneNum">
+            <th mat-header-cell *matHeaderCellDef>Phone number</th>
+            <td mat-cell *matCellDef="let employee">{{ employee.phoneNum }}</td>
+          </ng-container>
+  
+          <ng-container matColumnDef="title">
+            <th mat-header-cell *matHeaderCellDef>Title</th>
+            <td mat-cell *matCellDef="let employee">{{ employee.title }}</td>
+          </ng-container>
+  
+          <ng-container matColumnDef="roleNames">
+            <th mat-header-cell *matHeaderCellDef>Role Names</th>
+            <td mat-cell *matCellDef="let employee">
+              <span *ngFor="let role of employee.roleNames">{{ role }}</span>
+            </td>
+          </ng-container>
+  
+          <!-- Table Header Row -->
+          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  
+          <!-- Table Row -->
+          <tr mat-row *matRowDef="let engineer; columns: displayedColumns;"></tr>
+        </table>
+      </div>
+    </div>
+  </body>
+  

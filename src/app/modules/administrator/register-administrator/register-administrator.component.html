@@ -1,0 +1,84 @@
+<body>
+  <div class="container">
+    <h1 class="table-title">Create new administrator</h1>
+    <div class="table-container">
+      <table id="table1" class="mat-table">
+        <tr>
+          <th>Email</th>
+          <td><mat-form-field appearance="outline"><input matInput type="text" [(ngModel)]="newAdministrator.email" /></mat-form-field></td>
+        </tr>
+
+        <tr>
+          <th>Password</th>
+          <td>
+            <mat-form-field appearance="outline">
+              <input matInput type="password" [(ngModel)]="newAdministrator.password" />
+            </mat-form-field>
+          </td>
+        </tr>
+
+        <tr>
+            <th>Confirm Password</th>
+            <td>
+              <mat-form-field appearance="outline">
+                <input matInput type="password" [(ngModel)]="confirmPassword" />
+              </mat-form-field>
+            </td>
+          </tr>
+
+        <tr>
+          <th>Name</th>
+          <td><mat-form-field appearance="outline"><input matInput type="text" [(ngModel)]="newAdministrator.name" /></mat-form-field></td>
+        </tr>
+
+        <tr>
+          <th>Surname</th>
+          <td><mat-form-field appearance="outline"><input matInput type="text" [(ngModel)]="newAdministrator.surname" /></mat-form-field></td>
+        </tr>
+
+        <tr>
+          <th>Street</th>
+          <td><mat-form-field appearance="outline"><input matInput type="text" [(ngModel)]="newAdministrator.address.street" /></mat-form-field></td>
+        </tr>
+
+        <tr>
+          <th>Number</th>
+          <td><mat-form-field appearance="outline"><input matInput type="text" [(ngModel)]="newAdministrator.address.number" /></mat-form-field></td>
+        </tr>
+
+        <tr>
+          <th>City</th>
+          <td><mat-form-field appearance="outline"><input matInput type="text" [(ngModel)]="newAdministrator.address.city" /></mat-form-field></td>
+        </tr>
+
+        <tr>
+          <th>Country</th>
+          <td><mat-form-field appearance="outline"><input matInput type="text" [(ngModel)]="newAdministrator.address.country" /></mat-form-field></td>
+        </tr>
+
+        <tr>
+          <th>PhoneNumber</th>
+          <td><mat-form-field appearance="outline"><input matInput type="text" [(ngModel)]="newAdministrator.phoneNum" /></mat-form-field></td>
+        </tr>
+
+        <tr>
+          <th>Title</th>
+          <td><mat-form-field appearance="outline"><input matInput type="text" [(ngModel)]="newAdministrator.title" /></mat-form-field></td>
+        </tr>
+
+        <tr>
+          <th>Role</th>
+          <td>
+            <mat-form-field appearance="outline" class="black-text">
+              <input matInput type="text" value="Administrator" disabled />
+            </mat-form-field>
+          </td>
+        </tr>
+
+        <tr>
+          <th>Create</th>
+          <td><button mat-raised-button color="primary" (click)="createAdministrator()">Create</button></td>
+        </tr>
+      </table>
+    </div>
+</div>

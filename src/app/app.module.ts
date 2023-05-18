@@ -21,6 +21,14 @@ import { MatSidenavModule } from "@angular/material/sidenav";
 import { MatListModule } from "@angular/material/list";
 import { RouterModule } from "@angular/router";
 import { MatRadioModule } from "@angular/material/radio";
+import { EmployeesReviewComponent } from './modules/administrator/employees-review/employees-review.component';
+import { ProjectsReviewComponent } from './modules/administrator/projects-review/projects-review.component';
+import { CreateProjectComponent } from './modules/administrator/create-project/create-project.component';
+import { EditProfileComponent } from './modules/administrator/edit-profile/edit-profile.component';
+import { RegisterAdministratorComponent } from './modules/administrator/register-administrator/register-administrator.component';
+import { ChangePasswordComponent } from './modules/administrator/change-password/change-password.component';
+import { CdkTableModule } from '@angular/cdk/table';
+
 
 
 @NgModule({
@@ -28,6 +36,12 @@ import { MatRadioModule } from "@angular/material/radio";
     AppComponent,
     HomeComponent,
     SearchUsersComponent,
+    EmployeesReviewComponent,
+    ProjectsReviewComponent,
+    CreateProjectComponent,
+    EditProfileComponent,
+    RegisterAdministratorComponent,
+    ChangePasswordComponent,
   ],
   imports: [
     BrowserModule,
@@ -57,7 +71,12 @@ import { MatRadioModule } from "@angular/material/radio";
     RouterModule,
     MatRadioModule,
     MatDatepickerModule,
-    MatOptionModule
+    MatOptionModule, 
+    MatInputModule,
+    MatFormFieldModule,
+    CdkTableModule,
+    MatFormFieldModule,
+    MatInputModule,
   ],
   providers: [
     DatePipe

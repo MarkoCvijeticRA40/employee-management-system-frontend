@@ -15,9 +15,13 @@ export class EditProfileComponent implements OnInit {
   currentUser : User = new User();
 
   ngOnInit(): void {
-    this.userService.getById(8).subscribe(res => {
+    this.userService.getById(20).subscribe(res => {
       this.currentUser = res;
     });
+  }
+
+  isEmpty(value: any): boolean {
+    return value === null || value === undefined || value === '';
   }
 
   public ChangePassword() {
@@ -25,9 +29,24 @@ export class EditProfileComponent implements OnInit {
   }
 
   public updateUser() {
-    this.userService.updateUser(this.currentUser).subscribe(res => {
-      this.currentUser = res;
-        alert("User profile successfully updated.");
-    });
+    if (this.isEmpty(this.currentUser.email) ||
+        this.isEmpty(this.currentUser.name) ||
+        this.isEmpty(this.currentUser.surname) ||
+        this.isEmpty(this.currentUser.address.street) ||
+        this.isEmpty(this.currentUser.address.number) ||
+        this.isEmpty(this.currentUser.address.city) ||
+        this.isEmpty(this.currentUser.address.country) ||
+        this.isEmpty(this.currentUser.phoneNum) ||
+        this.isEmpty(this.currentUser.title)) 
+    { 
+      alert('Please fill in all fields.');
+        return;    
+    }
+    else {
+      this.userService.updateUser(this.currentUser).subscribe(res => {
+        this.currentUser = res;
+          alert("User profile successfully updated.");
+      });
+    }
   }
 }

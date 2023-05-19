@@ -18,9 +18,20 @@ export class RegisterAdministratorComponent implements OnInit {
   confirmPassword : String = '';
 
   ngOnInit(): void {
-    this.userService.getById(8).subscribe(res => {
+    this.userService.getById(20).subscribe(res => {
       this.currentUser = res;
     });
+    /*this.newAdministrator.name = "Milan";
+    this.newAdministrator.surname = "Milanovic";
+    this.newAdministrator.email = "milanovic@gmail.com"
+    this.newAdministrator.password = "Milan123";
+    this.confirmPassword = "Milan123";
+    this.newAdministrator.address.street = "Arsenije Carnojevica"
+    this.newAdministrator.address.country = "Srbija";
+    this.newAdministrator.address.number = "13";
+    this.newAdministrator.address.city = "Sremska Mitrovica";
+    this.newAdministrator.phoneNum = "0640304321";
+    this.newAdministrator.title = "Diplomirani programer";*/
   }
 
   public createAdministrator() {

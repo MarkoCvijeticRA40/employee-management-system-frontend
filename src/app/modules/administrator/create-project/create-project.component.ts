@@ -18,14 +18,18 @@ export class CreateProjectComponent implements OnInit {
   employees: User[] = [];
 
   ngOnInit(): void {
-    this.userService.getEmployees().subscribe(res => {
+    this.userService.getAllPotentialWorkers().subscribe(res => {
       this.employees = res;
     });
+    /*
+    this.project.name = "Srednja skola";
+    this.project.duration = "Pola godine";*/
   }
 
   create() {
     this.projectService.createProject(this.project).subscribe(res => {
       this.project = res;
+        this.project = new Project();
         alert("Project successfully created.");
     });
   }

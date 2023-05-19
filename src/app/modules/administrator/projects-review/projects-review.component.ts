@@ -23,7 +23,7 @@ export class ProjectsReviewComponent implements OnInit {
     this.projectService.findAll().subscribe(res => {
       this.projects = res;
     });
-    this.userService.getEmployees().subscribe(res => {
+    this.userService.getAllPotentialWorkers().subscribe(res => {
       this.employees = res;
     });
   }

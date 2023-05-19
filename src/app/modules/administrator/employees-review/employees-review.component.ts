@@ -18,7 +18,7 @@ export class EmployeesReviewComponent implements OnInit {
   displayedColumns: string[] = ['name', 'lastname', 'email', 'date', 'addresses', 'phoneNum', 'title', 'roleNames'];
 
   ngOnInit(): void {
-    this.userService.getEmployees().subscribe(res => {
+    this.userService.getEnabled().subscribe(res => {
       this.employees = res;
     });
   }

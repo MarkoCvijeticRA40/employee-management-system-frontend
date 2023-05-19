@@ -10,12 +10,13 @@ import { RegisterAdministratorComponent } from "./modules/administrator/register
 import { AuthGuard } from "./modules/administrator/auth.guard";
 import { FirstLoginComponent } from "./modules/administrator/first-login/first-login.component";
 import { HomeComponent } from "./modules/pages/home/home.component";
+import { ChangePasswordComponent } from "./modules/administrator/change-password/change-password.component";
 
 const routes: Routes = [
   {
     path: "home",
     component: HomePageComponent,
-    canActivate: [AuthGuard], // Apply the AuthGuard to protect the routes
+    //canActivate: [AuthGuard], // Apply the AuthGuard to protect the routes
     children: [
       { path: "search/users", component: SearchUsersComponent },
       { path: "employees/review", component: EmployeesReviewComponent },
@@ -23,7 +24,8 @@ const routes: Routes = [
       { path: "project/create", component: CreateProjectComponent },
       { path: "edit/profile", component: EditProfileComponent },
       { path: "create/administrator", component: RegisterAdministratorComponent },
-      { path: "create/project" , component : CreateProjectComponent },    
+      { path: "create/project" , component : CreateProjectComponent },   
+      { path: "change/password",component : ChangePasswordComponent} 
     ],
   },
   { path: "first/login", component: FirstLoginComponent }, // This route is accessible regardless of the user's account status

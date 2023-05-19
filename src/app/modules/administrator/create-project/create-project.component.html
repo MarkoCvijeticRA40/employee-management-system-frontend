@@ -1,0 +1,45 @@
+<body>
+    <div class="container">
+      <h1 class="table-title">Edit profile</h1>
+      <div class="table-container">
+          <table id="table1" class="mat-table">
+            <tr>
+              <th>Name:</th>
+              <td>
+                <mat-form-field appearance="outline">
+                  <input matInput type="text" [(ngModel)]="project.name" />
+                </mat-form-field>
+              </td>
+            </tr>
+  
+            <tr>
+              <th>Duration:</th>
+              <td>
+                <mat-form-field appearance="outline">
+                  <input matInput type="text" [(ngModel)]="project.duration" />
+                </mat-form-field>
+              </td>
+            </tr>
+  
+            <tr>
+              <th>Select users:</th>
+              <td>
+                <mat-form-field appearance="outline">
+                  <mat-select [(ngModel)]="project.users" multiple>
+                    <mat-option *ngFor="let employee of employees" [value]="employee">
+                      {{ employee.name }}
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </td>
+            </tr>
+            
+            <tr>
+                <th>Create</th>
+                <td><button mat-raised-button color="primary" (click)="create()">Create</button></td>
+              </tr>
+          </table>  
+      </div>
+    </div>
+  </body>
+  

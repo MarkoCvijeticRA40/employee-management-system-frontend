@@ -1,0 +1,64 @@
+<body>
+    <div class="container">
+    <h1 class="table-title">Edit profile</h1>
+      <div class="table-container">
+        <table id="table1" class="mat-table">
+          <tr>
+            <th>Email</th>
+            <td><mat-form-field appearance="outline"><input matInput type="text" [(ngModel)]="currentUser.email" /></mat-form-field></td>
+          </tr>
+  
+          <tr>
+            <th>Password</th>
+            <td><mat-form-field appearance="outline"><input matInput type="password" (keyup)="ChangePassword()" value="***" /></mat-form-field></td>
+          </tr>
+  
+          <tr>
+            <th>Name</th>
+            <td><mat-form-field appearance="outline"><input matInput type="text" [(ngModel)]="currentUser.name" /></mat-form-field></td>
+          </tr>
+  
+          <tr>
+            <th>Surname</th>
+            <td><mat-form-field appearance="outline"><input matInput type="text" [(ngModel)]="currentUser.surname" /></mat-form-field></td>
+          </tr>
+  
+          <tr>
+            <th>Street</th>
+            <td><mat-form-field appearance="outline"><input matInput type="text" [(ngModel)]="currentUser.address.street" /></mat-form-field></td>
+          </tr>
+
+          <tr>
+            <th>Number</th>
+            <td><mat-form-field appearance="outline"><input matInput type="text" [(ngModel)]="currentUser.address.number" /></mat-form-field></td>
+          </tr>
+
+          <tr>
+            <th>City</th>
+            <td><mat-form-field appearance="outline"><input matInput type="text" [(ngModel)]="currentUser.address.city" /></mat-form-field></td>
+          </tr>
+
+          <tr>
+            <th>Country</th>
+            <td><mat-form-field appearance="outline"><input matInput type="text" [(ngModel)]="currentUser.address.country" /></mat-form-field></td>
+          </tr>
+
+          <tr>
+            <th>PhoneNumber</th>
+            <td><mat-form-field appearance="outline"><input matInput type="text" [(ngModel)]="currentUser.phoneNum" /></mat-form-field></td>
+          </tr>
+  
+          <tr>
+            <th>Title</th>
+            <td><mat-form-field appearance="outline"><input matInput type="text" [(ngModel)]="currentUser.title" /></mat-form-field></td>
+          </tr>
+  
+          <tr>
+            <th>Save</th>
+            <td><button mat-raised-button color="primary" (click)="updateUser()">Save</button></td>
+          </tr>
+        </table>
+      </div>
+    </div>
+  </body>
+  

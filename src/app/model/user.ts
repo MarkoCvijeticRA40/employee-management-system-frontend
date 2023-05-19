@@ -1,5 +1,6 @@
 import { Address } from "./address";
 
+///MORA DA SE STAVI accountEnabled iako je na backu isAccountEnalbed,nece da pristupi drugacije
 export class User {
 
     id : number = 0;
@@ -12,7 +13,7 @@ export class User {
     title : string = '';
     roleNames : string[] = [];
     startOfWork : Date = new Date();
-    isAccountEnabled : boolean = false;
+    accountEnabled : boolean = false;
 
     public constructor(obj?: any) {
         if (obj) {
@@ -26,7 +27,7 @@ export class User {
             this.title = obj.title;
             this.roleNames = obj.roleNames;
             this.startOfWork = obj.startOfWork;
-            this.isAccountEnabled = obj.isAccountEnabled;
+            this.accountEnabled = obj.accountEnabled;
         }
     }
 

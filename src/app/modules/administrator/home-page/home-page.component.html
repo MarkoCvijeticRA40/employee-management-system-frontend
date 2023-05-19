@@ -1,0 +1,30 @@
+<mat-toolbar color="primary">
+    <mat-toolbar-row class="blue">
+      <button mat-icon-button>
+        <mat-icon (click)="sidebarmenu.toggle()">menu</mat-icon>
+      </button>
+
+      <button class="home" (click)="home()">
+        <h2>Welcome</h2>
+      </button>
+      
+    </mat-toolbar-row>
+  </mat-toolbar>
+  
+  <mat-sidenav-container>
+    <mat-sidenav #sidebarmenu>
+      <mat-nav-list>
+        <a mat-list-item [routerLink]="'search/users'">Search Engineers</a>
+        <a mat-list-item [routerLink]="'employees/review'">Employees Review</a>
+        <a mat-list-item [routerLink]="'projects/review'">Projects Review</a>
+        <a mat-list-item [routerLink]="'project/create'">Create Project</a>
+        <a mat-list-item [routerLink]="'edit/profile'">Edit Profile</a>
+        <a mat-list-item [routerLink]="'create/administrator'">Create Administrator</a>
+      </mat-nav-list>
+    </mat-sidenav>
+    <mat-sidenav-content class="bg">
+      <div style="height: 92vh">
+        <router-outlet></router-outlet>
+      </div>
+    </mat-sidenav-content>
+  </mat-sidenav-container>

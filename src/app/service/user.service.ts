@@ -15,7 +15,7 @@ export class UserService {
   constructor(private http: HttpClient, private router: Router) { }
 
   registerUser(user: any): Observable<any> {
-    return this.http.post<any>(this.apiHost + 'users/register', user, {headers: this.headers});
+    return this.http.post<any>(this.apiHost + 'users/register/administrator', user, {headers: this.headers});
   }
 
   searchEngineers(email: string,name: string, surname: string, startDate: String, endDate: String): Observable<any> {
@@ -33,10 +33,15 @@ export class UserService {
     return this.http.get<any>(this.apiHost + 'users/rolename', { params });
   }
 
-  
+  getEmployees(): Observable<any[]> {
+    return this.http.get<any[]>(this.apiHost + "users/employees", {headers: this.headers});
+  }
 
+  getById(id: number): Observable<User> {
+    return this.http.get<User>(`${this.apiHost}users/${id}`, { headers: this.headers });
+  }
 
-
-
-
+  updateUser(user: any): Observable<any>{
+    return this.http.put<any>(this.apiHost + 'users/update' , user , { headers : this.headers });          
+  }
 }

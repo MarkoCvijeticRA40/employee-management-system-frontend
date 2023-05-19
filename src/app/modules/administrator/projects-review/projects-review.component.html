@@ -1,1 +1,45 @@
-<p>projects-review works!</p>
+<body>
+    <div class="container">
+      <h1 class="table-title">Projects</h1>
+      <div class="table-container">
+        <table mat-table class="mat-table" [dataSource]="projects">
+          <!-- Table Columns -->
+          <ng-container matColumnDef="name">
+            <th mat-header-cell *matHeaderCellDef>Name</th>
+            <td mat-cell *matCellDef="let project">{{ project.name }}</td>
+          </ng-container>
+  
+          <ng-container matColumnDef="lastname">
+            <th mat-header-cell *matHeaderCellDef>Duration</th>
+            <td mat-cell *matCellDef="let project">{{ project.duration }}</td>
+          </ng-container>
+  
+          <ng-container matColumnDef="email">
+            <th mat-header-cell *matHeaderCellDef>Users</th>
+            <td mat-cell *matCellDef="let project">
+              <ul>
+                <li *ngFor="let user of project.users">{{ user.name }} {{ user.surname }} , {{ user.email }}</li>
+              </ul>
+            </td>
+          </ng-container>
+  
+          <!-- "Edit" Button Column -->
+          <ng-container matColumnDef="actions">
+            <th mat-header-cell *matHeaderCellDef>Actions</th>
+            <td mat-cell *matCellDef="let project">
+              <button mat-button color="primary" (click)="getUsersNotInProject(employees,project.users)">
+                Edit
+              </button>
+            </td>
+          </ng-container>
+  
+          <!-- Table Header Row -->
+          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  
+          <!-- Table Row -->
+          <tr mat-row *matRowDef="let project; columns: displayedColumns;"></tr>
+        </table>
+      </div>
+    </div>
+  </body>
+  

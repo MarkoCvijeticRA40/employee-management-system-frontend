@@ -1,6 +1,5 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 
 @Injectable({
@@ -8,14 +7,16 @@ import { Observable } from 'rxjs';
 })
 export class ProjectService {
 
-  apiHost: string = 'http://localhost:8080/';
+  apiHost: string = 'http://localhost:8080';
   headers: HttpHeaders = new HttpHeaders({ 'Content-Type': 'application/json' });
 
-  constructor(private http: HttpClient, private router: Router) { }
+  constructor(private http: HttpClient) { }
 
   createProject(project: any): Observable<any> {
-    return this.http.post<any>(this.apiHost + 'projects/create', project, {headers: this.headers});
+    return this.http.post<any>(`${this.apiHost}/projects/create`, project, { headers: this.headers });
   }
 
- 
+  findAll(): Observable<any[]> {
+    return this.http.get<any[]>(`${this.apiHost}/projects`, { headers: this.headers });
+  }
 }

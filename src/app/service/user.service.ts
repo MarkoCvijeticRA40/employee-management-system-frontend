@@ -33,8 +33,8 @@ export class UserService {
     return this.http.get<any>(this.apiHost + 'users/rolename', { params });
   }
 
-  getEmployees(): Observable<any[]> {
-    return this.http.get<any[]>(this.apiHost + "users/employees", {headers: this.headers});
+  getEnabled(): Observable<any[]> {
+    return this.http.get<any[]>(this.apiHost + "users/enabled", {headers: this.headers});
   }
 
   getById(id: number): Observable<User> {
@@ -43,5 +43,9 @@ export class UserService {
 
   updateUser(user: any): Observable<any>{
     return this.http.put<any>(this.apiHost + 'users/update' , user , { headers : this.headers });          
+  }
+
+  getAllPotentialWorkers(): Observable<any[]> {
+    return this.http.get<any[]>(this.apiHost + "users/potential/workers", {headers: this.headers});
   }
 }

@@ -16,7 +16,7 @@
               <th>Duration:</th>
               <td>
                 <mat-form-field appearance="outline">
-                  <input matInput type="text" [(ngModel)]="project.duration" />
+                  <input matInput type="text" [(ngModel)]="project.duration"/>
                 </mat-form-field>
               </td>
             </tr>
@@ -27,7 +27,7 @@
                 <mat-form-field appearance="outline">
                   <mat-select [(ngModel)]="project.users" multiple>
                     <mat-option *ngFor="let employee of employees" [value]="employee">
-                      {{ employee.name }}
+                      {{ employee.name }} {{employee.surname}}
                     </mat-option>
                   </mat-select>
                 </mat-form-field>

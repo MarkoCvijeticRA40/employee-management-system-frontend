@@ -20,7 +20,7 @@
           </ng-container>
   
           <ng-container matColumnDef="date">
-            <th mat-header-cell *matHeaderCellDef>Date</th>
+            <th mat-header-cell *matHeaderCellDef>Start of work</th>
             <td mat-cell *matCellDef="let employee">{{ formatDate(employee.startOfWork) }}</td>
           </ng-container>
   
@@ -42,7 +42,7 @@
           <ng-container matColumnDef="roleNames">
             <th mat-header-cell *matHeaderCellDef>Role Names</th>
             <td mat-cell *matCellDef="let employee">
-              <span *ngFor="let role of employee.roleNames">{{ role }}</span>
+              <span *ngFor="let role of employee.roleNames">{{ role }}-</span>
             </td>
           </ng-container>
   

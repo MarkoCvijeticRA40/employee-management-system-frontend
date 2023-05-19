@@ -11,13 +11,13 @@ import { UserService } from 'src/app/service/user.service';
 })
 export class ProjectsReviewComponent implements OnInit {
 
-  constructor(private projectService : ProjectService,private userService : UserService) { }
+  constructor(private projectService: ProjectService, private userService: UserService) { }
 
-  projects : Project[] = [];
-
-  employees : User[] = [];
-
-  displayedColumns: string[] = ['name', 'lastname', 'email', 'actions'];
+  projects: Project[] = [];
+  employees: User[] = [];
+  displayedColumns: string[] = ['name', 'duration', 'users', 'actions'];
+  selectedProject: Project | null = null;
+  selectedUsers: User[] = [];
 
   ngOnInit(): void {
     this.projectService.findAll().subscribe(res => {
@@ -28,11 +28,15 @@ export class ProjectsReviewComponent implements OnInit {
     });
   }
 
-  getUsersNotInProject(all: User[], projectUsers: User[]): User[] {
-    // Filter the users from 'all' list that are not present in 'projectUsers' list
-    const usersNotInProject = all.filter(user => !projectUsers.some(projectUser => projectUser.id === user.id));
-  
-    return usersNotInProject;
+  getUsersNotInProject(employees: User[], projectUsers: User[]): User[] {
+    return employees.filter((employee: User) => !projectUsers.some((user: User) => user.id === employee.id));
   }
-
-}
+  
+  addUsersToProject(users: User[], project: Project): void {
+    project.users.push(...users);
+    this.selectedUsers = [];
+    this.projectService.updateProject(project).subscribe(res => {
+      alert("Project successfully updated.");
+    });
+  }
+}  

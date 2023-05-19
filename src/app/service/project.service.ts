@@ -19,4 +19,8 @@ export class ProjectService {
   findAll(): Observable<any[]> {
     return this.http.get<any[]>(`${this.apiHost}/projects`, { headers: this.headers });
   }
+
+  updateProject(project: any): Observable<any>{
+    return this.http.put<any>(this.apiHost + '/projects/update' , project , { headers : this.headers });          
+  }
 }

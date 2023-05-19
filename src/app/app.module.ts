@@ -31,6 +31,9 @@ import { CdkTableModule } from '@angular/cdk/table';
 import { HomePageComponent } from './modules/administrator/home-page/home-page.component';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { FirstLoginComponent } from './modules/administrator/first-login/first-login.component';
+import { ProjectManagerHomeComponent } from './modules/projectManager/project-manager-home/project-manager-home.component';
+import { SoftwareEngineerHomeComponent } from './modules/softwareEngineer/software-engineer-home/software-engineer-home.component';
+import { HrManagerHomeComponent } from './modules/hrManager/hr-manager-home/hr-manager-home.component';
 
 @NgModule({
   declarations: [
@@ -45,6 +48,9 @@ import { FirstLoginComponent } from './modules/administrator/first-login/first-l
     ChangePasswordComponent,
     HomePageComponent,
     FirstLoginComponent,
+    ProjectManagerHomeComponent,
+    SoftwareEngineerHomeComponent,
+    HrManagerHomeComponent,
   ],
   imports: [
     BrowserModule,

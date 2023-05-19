@@ -7,16 +7,21 @@ import { ProjectsReviewComponent } from "./modules/administrator/projects-review
 import { CreateProjectComponent } from "./modules/administrator/create-project/create-project.component";
 import { EditProfileComponent } from "./modules/administrator/edit-profile/edit-profile.component";
 import { RegisterAdministratorComponent } from "./modules/administrator/register-administrator/register-administrator.component";
-import { AuthGuard } from "./modules/administrator/auth.guard";
 import { FirstLoginComponent } from "./modules/administrator/first-login/first-login.component";
-import { HomeComponent } from "./modules/pages/home/home.component";
 import { ChangePasswordComponent } from "./modules/administrator/change-password/change-password.component";
+import { ProjectManagerHomeComponent } from "./modules/projectManager/project-manager-home/project-manager-home.component";
+import { HrManagerHomeComponent } from "./modules/hrManager/hr-manager-home/hr-manager-home.component";
+import { SoftwareEngineerHomeComponent } from "./modules/softwareEngineer/software-engineer-home/software-engineer-home.component";
+import { AdministratorAuthGuard } from "./authguard/administrator-auth-guard";
+import { ProjectManagerAuthGuard } from "./authguard/project-manager-auth-guard";
+import { HrManagerAuthGuard } from "./authguard/hr-manager-auth-guard";
+import { SoftwareEngineerAuthGuard } from "./authguard/software-engineer-auth-guard";
 
 const routes: Routes = [
   {
-    path: "home",
+    path: "administrator",
     component: HomePageComponent,
-    //canActivate: [AuthGuard], // Apply the AuthGuard to protect the routes
+    canActivate: [AdministratorAuthGuard], 
     children: [
       { path: "search/users", component: SearchUsersComponent },
       { path: "employees/review", component: EmployeesReviewComponent },
@@ -24,13 +29,38 @@ const routes: Routes = [
       { path: "project/create", component: CreateProjectComponent },
       { path: "edit/profile", component: EditProfileComponent },
       { path: "create/administrator", component: RegisterAdministratorComponent },
-      { path: "create/project" , component : CreateProjectComponent },   
-      { path: "change/password",component : ChangePasswordComponent} 
+      { path: "create/project", component: CreateProjectComponent },   
+      { path: "change/password", component: ChangePasswordComponent} 
     ],
   },
-  { path: "first/login", component: FirstLoginComponent }, // This route is accessible regardless of the user's account status
-  { path: "no/access", component: HomeComponent },
+  {
+    path: "projectmanager",
+    component: ProjectManagerHomeComponent,
+    //canActivate: [ProjectManagerAuthGuard],
+    children: [
+      { path: "home", component: ProjectManagerHomeComponent }
+    ]
+  },
+  {
+    path: "hrmanager",
+    component: HrManagerHomeComponent,
+    //canActivate: [HrManagerAuthGuard],
+    children: [
+      { path: "home", component: HrManagerHomeComponent }
+    ]
+  },
+  {
+    path: "softwareengineer",
+    component: SoftwareEngineerHomeComponent,
+    //canActivate: [SoftwareEngineerAuthGuard],
+    children: [
+      { path: "home", component: SoftwareEngineerHomeComponent }
+    ]
+  },
+  { path: "first/login", component: FirstLoginComponent },
+  { path: "", redirectTo: "", pathMatch: "full" }, // Preusmeravanje na "first/login" za neautorizovane korisnike
 ];
+
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

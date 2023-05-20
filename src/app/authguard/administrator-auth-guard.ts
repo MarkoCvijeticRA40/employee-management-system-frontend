@@ -15,7 +15,7 @@ export class AdministratorAuthGuard implements CanActivate {
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot
   ): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-    return this.userService.getById(20).pipe( //dodati da dobavlja pomocu tokena a ne harkodovano
+    return this.userService.getById(34).pipe( //dodati da dobavlja pomocu tokena a ne harkodovano
       switchMap((user: User) => {
         const isAdmin = user.roleNames.includes('Administrator'); // Provera da li korisnik ima ulogu Administrator
         if (!isAdmin) {

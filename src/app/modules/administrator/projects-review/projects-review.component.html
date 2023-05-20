@@ -28,7 +28,7 @@
           <th mat-header-cell *matHeaderCellDef>Staff</th>
           <td mat-cell *matCellDef="let project">
             <ul>
-              <li *ngFor="let user of project.users">{{ user.name }} {{ user.lastname }}, {{ user.email }} , {{user.roleNames}}</li>
+              <li *ngFor="let user of project.users">{{ user.name }}  {{ user.surname }}, {{ user.email }} , {{user.roleNames}}</li>
             </ul>
           </td>
         </ng-container>

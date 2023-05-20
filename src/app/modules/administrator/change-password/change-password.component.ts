@@ -48,7 +48,7 @@ export class ChangePasswordComponent implements OnInit {
   }
 
   public GoBack() {
-    this.router.navigate(['/home/edit/profile']);
+    this.router.navigate(['/administrator/edit/profile']);
   }
 
   private isInputValid(): boolean {

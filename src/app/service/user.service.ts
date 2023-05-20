@@ -9,7 +9,7 @@ import { User } from '../model/user';
 })
 export class UserService {
 
-  apiHost: string = 'http://localhost:8080/';
+  apiHost: string = 'https://localhost:443/';
   headers: HttpHeaders = new HttpHeaders({ 'Content-Type': 'application/json' });
 
   constructor(private http: HttpClient, private router: Router) { }

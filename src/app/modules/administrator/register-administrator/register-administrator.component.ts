@@ -58,9 +58,17 @@ export class RegisterAdministratorComponent implements OnInit {
     this.newAdministrator.roleNames.push("Administrator");
     this.userService.registerUser(this.newAdministrator).subscribe(res => {
       this.newAdministrator = res;
-      alert("You have successfully created a new administrator.");
-      this.newAdministrator = new User();
-      this.confirmPassword = '';
+      if(this.newAdministrator != null){
+        alert("You have successfully created a new administrator.");
+        this.newAdministrator = new User();
+        this.confirmPassword = '';
+      }
+      else 
+      {
+        alert("There is already a user with that email");
+        this.newAdministrator = new User();
+        this.confirmPassword = '';
+      }
     });
   }
 

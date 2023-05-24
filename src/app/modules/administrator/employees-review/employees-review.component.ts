@@ -23,10 +23,11 @@ export class EmployeesReviewComponent implements OnInit {
     });
   }
 
-   // Function for formatting the date
-   formatDate(date: string): string {
-    const formattedDate = new Date(date);
-    return this.datePipe.transform(formattedDate, 'dd/MM/yyyy') || '';
+  formatDate(date: any): string {
+    if (date && Array.isArray(date) && date.length >= 6) {
+      const [year, month, day, hour, minute, second] = date;
+      return new Date(year, month - 1, day, hour, minute, second).toDateString();
+    }
+    return '';
   }
-
 }

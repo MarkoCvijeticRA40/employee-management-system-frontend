@@ -59,6 +59,8 @@ export class RegisterAdministratorComponent implements OnInit {
     this.userService.registerUser(this.newAdministrator).subscribe(res => {
       this.newAdministrator = res;
       alert("You have successfully created a new administrator.");
+      this.newAdministrator = new User();
+      this.confirmPassword = '';
     });
   }
 

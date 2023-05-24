@@ -31,6 +31,7 @@ export class CreateProjectComponent implements OnInit {
       this.project = res;
         this.project = new Project();
         alert("Project successfully created.");
+          this.project = new Project();
     });
   }
 }

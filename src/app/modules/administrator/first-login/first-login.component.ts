@@ -20,7 +20,7 @@ export class FirstLoginComponent implements OnInit {
   public confirmationPass: string = '';
 
   ngOnInit(): void {
-    this.userService.getById(34).subscribe(res => {
+    this.userService.getById(51).subscribe(res => {
       this.currentUser = res;
     });
   }

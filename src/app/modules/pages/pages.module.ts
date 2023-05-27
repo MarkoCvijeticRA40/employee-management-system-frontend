@@ -14,6 +14,7 @@ import { MatListModule } from '@angular/material/list';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatDatepickerModule } from '@angular/material/datepicker';
+import { LoginComponent } from './login/login.component';
 
 /*const routes: Routes = [
   {
@@ -27,6 +28,8 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 
 @NgModule({
   declarations: [
+  
+    LoginComponent
   ],
   imports: [
     CommonModule,

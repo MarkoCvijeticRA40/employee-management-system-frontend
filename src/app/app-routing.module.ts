@@ -18,6 +18,7 @@ import { HrManagerAuthGuard } from "./authguard/hr-manager-auth-guard";
 import { SoftwareEngineerAuthGuard } from "./authguard/software-engineer-auth-guard";
 import { AdministratorNotEnabledAuthGuard } from "./authguard/administrator-not-enabled-auth-guard";
 import { LoginComponent } from "./modules/pages/login/login.component";
+import { RegisterUserComponent } from "./modules/pages/register-user/register-user.component";
 
 const routes: Routes = [
   {
@@ -67,6 +68,10 @@ const routes: Routes = [
   {
     path: "login",
     component: LoginComponent,
+  },
+  {
+    path: "register",
+    component: RegisterUserComponent
   },
   { path: "", redirectTo: "", pathMatch: "full" }, // Preusmeravanje na "first/login" za neautorizovane korisnike
 ];

@@ -19,6 +19,7 @@ import { SoftwareEngineerAuthGuard } from "./authguard/software-engineer-auth-gu
 import { AdministratorNotEnabledAuthGuard } from "./authguard/administrator-not-enabled-auth-guard";
 import { LoginComponent } from "./modules/pages/login/login.component";
 import { RegisterUserComponent } from "./modules/pages/register-user/register-user.component";
+import { ListRequestsComponent } from "./modules/administrator/list-requests/list-requests.component";
 
 const routes: Routes = [
   {
@@ -33,7 +34,8 @@ const routes: Routes = [
       { path: "edit/profile", component: EditProfileComponent },
       { path: "create/administrator", component: RegisterAdministratorComponent },
       { path: "create/project", component: CreateProjectComponent },   
-      { path: "change/password", component: ChangePasswordComponent} 
+      { path: "change/password", component: ChangePasswordComponent},
+      { path: "list-requests", component: ListRequestsComponent}
     ],
   },
   {

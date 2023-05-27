@@ -34,6 +34,7 @@ import { FirstLoginComponent } from './modules/administrator/first-login/first-l
 import { ProjectManagerHomeComponent } from './modules/projectManager/project-manager-home/project-manager-home.component';
 import { SoftwareEngineerHomeComponent } from './modules/softwareEngineer/software-engineer-home/software-engineer-home.component';
 import { HrManagerHomeComponent } from './modules/hrManager/hr-manager-home/hr-manager-home.component';
+import { ListRequestsComponent } from './modules/administrator/list-requests/list-requests.component';
 
 @NgModule({
   declarations: [
@@ -51,6 +52,7 @@ import { HrManagerHomeComponent } from './modules/hrManager/hr-manager-home/hr-m
     ProjectManagerHomeComponent,
     SoftwareEngineerHomeComponent,
     HrManagerHomeComponent,
+    ListRequestsComponent,
   ],
   imports: [
     BrowserModule,

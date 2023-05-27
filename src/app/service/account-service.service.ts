@@ -65,5 +65,9 @@ export class AccountService {
     return JSON.parse(window.atob(access_token.split('.')[1])).sub;
   }
 
+  loginWithoutPassword(email: any): Observable<any> {
+    return this.http.get<any[]>(this.apiHost + "auth/generate-sttoken/" + email, {headers: this.headers});
+  }
+
   
 }

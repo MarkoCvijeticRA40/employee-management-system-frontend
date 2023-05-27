@@ -20,6 +20,11 @@ import { AdministratorNotEnabledAuthGuard } from "./authguard/administrator-not-
 import { LoginComponent } from "./modules/pages/login/login.component";
 import { RegisterUserComponent } from "./modules/pages/register-user/register-user.component";
 import { ListRequestsComponent } from "./modules/administrator/list-requests/list-requests.component";
+import { PaswordlessLoginComponent } from "./modules/pages/paswordless-login/paswordless-login.component";
+import { WelcomeSeComponent } from "./modules/softwareEngineer/welcome-se/welcome-se.component";
+import { WelcomePmComponent } from "./modules/projectManager/welcome-pm/welcome-pm.component";
+import { WelcomeAdminComponent } from "./modules/administrator/welcome-admin/welcome-admin.component";
+import { WelcomeHrComponent } from "./modules/hrManager/welcome-hr/welcome-hr.component";
 
 const routes: Routes = [
   {
@@ -35,31 +40,33 @@ const routes: Routes = [
       { path: "create/administrator", component: RegisterAdministratorComponent },
       { path: "create/project", component: CreateProjectComponent },   
       { path: "change/password", component: ChangePasswordComponent},
-      { path: "list-requests", component: ListRequestsComponent}
+      { path: "list-requests", component: ListRequestsComponent},
+      { path: "welcome/:ajwt/:rjwt/:email", component: WelcomeAdminComponent }
     ],
   },
   {
     path: "projectmanager",
-    component: ProjectManagerHomeComponent,
     //canActivate: [ProjectManagerAuthGuard],
     children: [
-      { path: "home", component: ProjectManagerHomeComponent }
+      { path: "home", component: ProjectManagerHomeComponent },
+      { path: "welcome/:ajwt/:rjwt/:email", component: WelcomePmComponent }
     ]
   },
   {
     path: "hrmanager",
-    component: HrManagerHomeComponent,
+    //component: HrManagerHomeComponent,
     //canActivate: [HrManagerAuthGuard],
     children: [
-      { path: "home", component: HrManagerHomeComponent }
+      { path: "home", component: HrManagerHomeComponent },
+      { path: "welcome/:ajwt/:rjwt/:email", component: WelcomeHrComponent }
     ]
   },
   {
     path: "softwareengineer",
-    component: SoftwareEngineerHomeComponent,
     //canActivate: [SoftwareEngineerAuthGuard],
     children: [
-      { path: "home", component: SoftwareEngineerHomeComponent }
+      { path: "home", component: SoftwareEngineerHomeComponent },
+      { path: "welcome/:ajwt/:rjwt/:email", component: WelcomeSeComponent }
     ]
   },
   {
@@ -74,6 +81,10 @@ const routes: Routes = [
   {
     path: "register",
     component: RegisterUserComponent
+  },
+  {
+    path: "passwordless-login",
+    component: PaswordlessLoginComponent
   },
   { path: "", redirectTo: "", pathMatch: "full" }, // Preusmeravanje na "first/login" za neautorizovane korisnike
 ];

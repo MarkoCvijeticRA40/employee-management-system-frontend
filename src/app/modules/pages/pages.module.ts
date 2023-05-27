@@ -16,6 +16,7 @@ import { MatRadioModule } from '@angular/material/radio';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { LoginComponent } from './login/login.component';
 import { RegisterUserComponent } from './register-user/register-user.component';
+import { PaswordlessLoginComponent } from './paswordless-login/paswordless-login.component';
 
 /*const routes: Routes = [
   {
@@ -31,7 +32,8 @@ import { RegisterUserComponent } from './register-user/register-user.component';
   declarations: [
   
     LoginComponent,
-       RegisterUserComponent
+       RegisterUserComponent,
+       PaswordlessLoginComponent
   ],
   imports: [
     CommonModule,

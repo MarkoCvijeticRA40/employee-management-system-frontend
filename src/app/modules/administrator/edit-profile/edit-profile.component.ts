@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { User } from 'src/app/model/user';
+import { AccountService } from 'src/app/service/account-service.service';
 import { UserService } from 'src/app/service/user.service';
 
 @Component({
@@ -10,12 +11,12 @@ import { UserService } from 'src/app/service/user.service';
 })
 export class EditProfileComponent implements OnInit {
 
-  constructor(private router: Router,private userService : UserService) { }
+  constructor(private router: Router,private userService : UserService, private accountService: AccountService) { }
 
   currentUser : User = new User();
 
   ngOnInit(): void {
-    this.userService.getById(51).subscribe(res => {
+    this.userService.getById(this.accountService.currentUser.id).subscribe(res => {
       this.currentUser = res;
     });
   }

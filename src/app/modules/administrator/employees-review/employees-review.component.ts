@@ -15,7 +15,7 @@ export class EmployeesReviewComponent implements OnInit {
 
   constructor(private userService: UserService, private router: Router, private datePipe: DatePipe) { }
 
-  displayedColumns: string[] = ['name', 'lastname', 'email', 'date', 'addresses', 'phoneNum', 'title', 'roleNames'];
+  displayedColumns: string[] = ['name', 'lastname', 'email', 'addresses', 'phoneNum', 'title', 'roleNames'];
 
   ngOnInit(): void {
     this.userService.getEnabled().subscribe(res => {

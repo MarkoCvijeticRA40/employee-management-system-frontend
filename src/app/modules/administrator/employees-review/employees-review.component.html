@@ -19,11 +19,6 @@
             <td mat-cell *matCellDef="let employee">{{ employee.email }}</td>
           </ng-container>
   
-          <ng-container matColumnDef="date">
-            <th mat-header-cell *matHeaderCellDef>Start of work</th>
-            <td mat-cell *matCellDef="let employee">{{ formatDate(employee.startOfWork) }}</td>
-          </ng-container>
-  
           <ng-container matColumnDef="addresses">
             <th mat-header-cell *matHeaderCellDef>Address</th>
             <td mat-cell *matCellDef="let employee">{{ employee.address.country }},{{ employee.address.city }},{{ employee.address.street }},{{ employee.address.number }}</td>

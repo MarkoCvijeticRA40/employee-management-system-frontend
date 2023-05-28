@@ -38,7 +38,7 @@ export class UserService {
   }
 
   getById(id: number): Observable<User> {
-    return this.http.get<User>(`${this.apiHost}users/${id}`, { headers: this.headers });
+    return this.http.get<User>(`${this.apiHost}users/email/${id}`, { headers: this.headers });
   }
 
   updateUser(user: any): Observable<any>{

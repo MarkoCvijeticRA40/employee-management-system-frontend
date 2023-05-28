@@ -12,10 +12,6 @@ import { ChangePasswordComponent } from "./modules/administrator/change-password
 import { ProjectManagerHomeComponent } from "./modules/projectManager/project-manager-home/project-manager-home.component";
 import { HrManagerHomeComponent } from "./modules/hrManager/hr-manager-home/hr-manager-home.component";
 import { SoftwareEngineerHomeComponent } from "./modules/softwareEngineer/software-engineer-home/software-engineer-home.component";
-import { AdministratorAuthGuard } from "./authguard/administrator-auth-guard";
-import { ProjectManagerAuthGuard } from "./authguard/project-manager-auth-guard";
-import { HrManagerAuthGuard } from "./authguard/hr-manager-auth-guard";
-import { SoftwareEngineerAuthGuard } from "./authguard/software-engineer-auth-guard";
 import { AdministratorNotEnabledAuthGuard } from "./authguard/administrator-not-enabled-auth-guard";
 import { LoginComponent } from "./modules/pages/login/login.component";
 import { RegisterUserComponent } from "./modules/pages/register-user/register-user.component";
@@ -27,6 +23,7 @@ import { WelcomeAdminComponent } from "./modules/administrator/welcome-admin/wel
 import { WelcomeHrComponent } from "./modules/hrManager/welcome-hr/welcome-hr.component";
 import { RefreshTokenComponent } from "./modules/administrator/refresh-token/refresh-token.component";
 import { ModifyPermissionsComponent } from "./modules/administrator/modify-permissions/modify-permissions.component";
+import { HomeComponent } from "./modules/pages/home/home.component";
 
 const routes: Routes = [
   {
@@ -50,27 +47,29 @@ const routes: Routes = [
   },
   {
     path: "projectmanager",
+    component: ProjectManagerHomeComponent,
     //canActivate: [ProjectManagerAuthGuard],
     children: [
-      { path: "home", component: ProjectManagerHomeComponent },
-      { path: "welcome/:ajwt/:rjwt/:email", component: WelcomePmComponent }
+      { path: "welcome/:ajwt/:rjwt/:email", component: WelcomePmComponent },
+      { path: "refresh-token", component: RefreshTokenComponent }
     ]
   },
   {
     path: "hrmanager",
-    //component: HrManagerHomeComponent,
+    component: HrManagerHomeComponent,
     //canActivate: [HrManagerAuthGuard],
     children: [
-      { path: "home", component: HrManagerHomeComponent },
-      { path: "welcome/:ajwt/:rjwt/:email", component: WelcomeHrComponent }
+      { path: "welcome/:ajwt/:rjwt/:email", component: WelcomeHrComponent },
+      { path: "refresh-token", component: RefreshTokenComponent }
     ]
   },
   {
     path: "softwareengineer",
+    component: SoftwareEngineerHomeComponent,
     //canActivate: [SoftwareEngineerAuthGuard],
     children: [
-      { path: "home", component: SoftwareEngineerHomeComponent },
-      { path: "welcome/:ajwt/:rjwt/:email", component: WelcomeSeComponent }
+      { path: "welcome/:ajwt/:rjwt/:email", component: WelcomeSeComponent },
+      { path: "refresh-token", component: RefreshTokenComponent }
     ]
   },
   {
@@ -79,16 +78,13 @@ const routes: Routes = [
     canActivate: [AdministratorNotEnabledAuthGuard] 
   },
   {
-    path: "login",
-    component: LoginComponent,
-  },
-  {
-    path: "register",
-    component: RegisterUserComponent
-  },
-  {
-    path: "passwordless-login",
-    component: PaswordlessLoginComponent
+    path: "",
+    component: HomeComponent,
+    children: [
+      { path: "login", component: LoginComponent },
+      { path: "register", component: RegisterUserComponent },
+      { path: "passwordless-login", component: PaswordlessLoginComponent }
+    ]
   },
   { path: "", redirectTo: "", pathMatch: "full" }, // Preusmeravanje na "first/login" za neautorizovane korisnike
 ];

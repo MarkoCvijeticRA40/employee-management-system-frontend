@@ -37,20 +37,16 @@ export class LoginComponent implements OnInit {
         this.currentUser = res.payload.User;
         localStorage.setItem('loggedUser', JSON.stringify(this.currentUser));   
         if (this.currentUser.roleNames[0] === 'Administrator') {
-            //this.router.navigate(['regular-user/flight-search']);
-            alert("Administrator")
+            this.router.navigate(['administrator']);
         }
         else if (this.currentUser.roleNames[0] === 'Software engineer') {
-            //this.router.navigate(['admin']);
-            alert("Software engineer")
+            this.router.navigate(['softwareengineer']);
         }
         else if (this.currentUser.roleNames[0] === 'Project manager') {
-          //this.router.navigate(['admin']);
-          alert("Project manager")
+          this.router.navigate(['projectmanager']);
         }        
         else if (this.currentUser.role.name === 'HR manager') {
-          //this.router.navigate(['admin']);
-          alert("HR manager")
+          this.router.navigate(['hrmanager']);
         }  
       });
     },

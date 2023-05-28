@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { User } from 'src/app/model/user';
+import { AccountService } from 'src/app/service/account-service.service';
 import { UserService } from 'src/app/service/user.service';
 
 @Component({
@@ -11,7 +12,7 @@ import { UserService } from 'src/app/service/user.service';
 })
 export class FirstLoginComponent implements OnInit {
 
-  constructor(private userService : UserService,private router : Router) { }
+  constructor(private userService : UserService,private router : Router, private accountService: AccountService) { }
 
   currentUser : User = new User();
 
@@ -20,7 +21,7 @@ export class FirstLoginComponent implements OnInit {
   public confirmationPass: string = '';
 
   ngOnInit(): void {
-    this.userService.getById(51).subscribe(res => {
+    this.userService.getById(this.accountService.currentUser.id).subscribe(res => {
       this.currentUser = res;
     });
   }

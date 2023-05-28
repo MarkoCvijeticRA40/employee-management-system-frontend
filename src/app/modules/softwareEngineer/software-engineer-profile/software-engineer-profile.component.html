@@ -1,0 +1,57 @@
+<app-software-engineer-sidebar></app-software-engineer-sidebar>
+<div class="container">
+  <h2>Profile info</h2>
+  <form class="form" (submit)="editProfile()">
+    <div class="form-parts">
+      <div class="left-part">
+        <div class="input">
+          <label>E-mail</label>
+          <input type="text" name="email" [(ngModel)]="user.email" disabled />
+        </div>
+        <div class="input">
+          <label>Password</label>
+          <input type="password" name="password" [(ngModel)]="user.password" />
+        </div>
+        <div class="input">
+          <label>Name</label>
+          <input type="text" name="name" [(ngModel)]="user.name" />
+        </div>
+        <div class="input">
+          <label>Surname</label>
+          <input type="text" name="surname" [(ngModel)]="user.surname" />
+        </div>
+        <div class="input">
+          <label>Street</label>
+          <input type="text" name="street" [(ngModel)]="user.address.street" />
+        </div>
+      </div>
+      <div class="right-part">
+        <div class="input">
+          <label>Street Number</label>
+          <input type="text" name="number" [(ngModel)]="user.address.number" />
+        </div>
+        <div class="input">
+          <label>City</label>
+          <input type="text" name="city" [(ngModel)]="user.address.city" />
+        </div>
+        <div class="input">
+          <label>Country</label>
+          <input
+            type="text"
+            name="country"
+            [(ngModel)]="user.address.country"
+          />
+        </div>
+        <div class="input">
+          <label>Title</label>
+          <input type="text" name="title" [(ngModel)]="user.title" />
+        </div>
+        <div class="input">
+          <label>Phone number</label>
+          <input type="text" name="phoneNumber" [(ngModel)]="user.phoneNum" />
+        </div>
+      </div>
+    </div>
+    <button class="edit-button" type="submit">Edit Profile</button>
+  </form>
+</div>

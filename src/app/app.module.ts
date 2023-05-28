@@ -34,6 +34,13 @@ import { FirstLoginComponent } from './modules/administrator/first-login/first-l
 import { ProjectManagerHomeComponent } from './modules/projectManager/project-manager-home/project-manager-home.component';
 import { SoftwareEngineerHomeComponent } from './modules/softwareEngineer/software-engineer-home/software-engineer-home.component';
 import { HrManagerHomeComponent } from './modules/hrManager/hr-manager-home/hr-manager-home.component';
+import { ProjectManagerSidebarComponent } from './modules/projectManager/project-manager-sidebar/project-manager-sidebar.component';
+import { ProjectManagerProfileComponent } from './modules/projectManager/project-manager-profile/project-manager-profile.component';
+import { ProjectManagerProjectsComponent } from './modules/projectManager/project-manager-projects/project-manager-projects.component';
+import { SoftwareEngineerSidebarComponent } from './modules/softwareEngineer/software-engineer-sidebar/software-engineer-sidebar.component';
+import { SoftwareEngineerProfileComponent } from './modules/softwareEngineer/software-engineer-profile/software-engineer-profile.component';
+import { SoftwareEngineerProjectsComponent } from './modules/softwareEngineer/software-engineer-projects/software-engineer-projects.component';
+import { ProjectManagerEditProjectsComponent } from './modules/projectManager/project-manager-edit-projects/project-manager-edit-projects.component';
 
 @NgModule({
   declarations: [
@@ -51,6 +58,13 @@ import { HrManagerHomeComponent } from './modules/hrManager/hr-manager-home/hr-m
     ProjectManagerHomeComponent,
     SoftwareEngineerHomeComponent,
     HrManagerHomeComponent,
+    ProjectManagerSidebarComponent,
+    ProjectManagerProfileComponent,
+    ProjectManagerProjectsComponent,
+    SoftwareEngineerSidebarComponent,
+    SoftwareEngineerProfileComponent,
+    SoftwareEngineerProjectsComponent,
+    ProjectManagerEditProjectsComponent,
   ],
   imports: [
     BrowserModule,

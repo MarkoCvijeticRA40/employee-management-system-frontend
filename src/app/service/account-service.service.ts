@@ -15,6 +15,7 @@ export class AccountService {
   currentUser: any =
     JSON.parse(localStorage.getItem('loggedUser') as string) || null;
   private loggedIn: boolean = !!this.access_token;
+  public role: string = localStorage.getItem('role') || '';
 
 
   constructor(private http: HttpClient, private router: Router) { }
@@ -26,9 +27,9 @@ export class AccountService {
         map((res) => {
           console.log(res);
           console.log('Login success');
-          this.access_token = res.accessToken;
-          localStorage.setItem('jwt', res.accessToken);
-          localStorage.setItem('rjwt', res.refreshToken);
+          this.access_token = res.access_token;
+          localStorage.setItem('jwt', res.access_token);
+          localStorage.setItem('rjwt', res.refresh_token);
           this.loggedIn = true;
         })
       );
@@ -45,8 +46,11 @@ export class AccountService {
     localStorage.removeItem('jwt');
     localStorage.removeItem('rjwt');
     localStorage.removeItem('loggedUser');
+    localStorage.removeItem('role');
     this.access_token = null;
+    this.refresh_token = null;
     this.loggedIn = false;
+    this.role = '';
   }
 
   tokenIsPresent() {
@@ -59,6 +63,10 @@ export class AccountService {
 
   isAuthenticated(): boolean {
     return this.loggedIn;
+  }
+
+  isExpectedRole(): string {
+    return this.role;
   }
 
   getEmailFromToken(access_token: any): string {

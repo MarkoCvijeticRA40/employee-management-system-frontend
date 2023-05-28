@@ -41,6 +41,7 @@ import { WelcomeHrComponent } from './modules/hrManager/welcome-hr/welcome-hr.co
 import { RefreshTokenComponent } from './modules/administrator/refresh-token/refresh-token.component';
 import { ModifyPermissionsComponent } from './modules/administrator/modify-permissions/modify-permissions.component';
 import { TokenInterceptor } from "./interceptor/token-interceptor.model";
+import { AdministratorAuthGuard } from "./authguard/administrator-auth-guard";
 
 @NgModule({
   declarations: [
@@ -104,6 +105,7 @@ import { TokenInterceptor } from "./interceptor/token-interceptor.model";
   ],
   providers: [
     DatePipe,
+    AdministratorAuthGuard,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: TokenInterceptor,

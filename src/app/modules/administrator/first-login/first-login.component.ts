@@ -30,7 +30,7 @@ export class FirstLoginComponent implements OnInit {
     if (this.isInputValid()) {
       if (this.isPassConfirmed()) {
         this.currentUser.password = this.password;
-        this.currentUser.accountEnabled = true;
+        this.currentUser.startOfWork = new Date();
         this.userService.updateUser(this.currentUser).subscribe(res => {
           alert("You have changed password successfully!");
             this.router.navigate(['/home/edit/profile']);

@@ -25,6 +25,7 @@ import { WelcomeSeComponent } from "./modules/softwareEngineer/welcome-se/welcom
 import { WelcomePmComponent } from "./modules/projectManager/welcome-pm/welcome-pm.component";
 import { WelcomeAdminComponent } from "./modules/administrator/welcome-admin/welcome-admin.component";
 import { WelcomeHrComponent } from "./modules/hrManager/welcome-hr/welcome-hr.component";
+import { RefreshTokenComponent } from "./modules/administrator/refresh-token/refresh-token.component";
 
 const routes: Routes = [
   {
@@ -41,7 +42,8 @@ const routes: Routes = [
       { path: "create/project", component: CreateProjectComponent },   
       { path: "change/password", component: ChangePasswordComponent},
       { path: "list-requests", component: ListRequestsComponent},
-      { path: "welcome/:ajwt/:rjwt/:email", component: WelcomeAdminComponent }
+      { path: "welcome/:ajwt/:rjwt/:email", component: WelcomeAdminComponent },
+      { path: "refresh-token", component: RefreshTokenComponent }
     ],
   },
   {

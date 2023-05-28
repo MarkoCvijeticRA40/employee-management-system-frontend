@@ -38,6 +38,7 @@ import { ListRequestsComponent } from './modules/administrator/list-requests/lis
 import { WelcomePmComponent } from './modules/projectManager/welcome-pm/welcome-pm.component';
 import { WelcomeAdminComponent } from './modules/administrator/welcome-admin/welcome-admin.component';
 import { WelcomeHrComponent } from './modules/hrManager/welcome-hr/welcome-hr.component';
+import { RefreshTokenComponent } from './modules/administrator/refresh-token/refresh-token.component';
 
 @NgModule({
   declarations: [
@@ -59,6 +60,7 @@ import { WelcomeHrComponent } from './modules/hrManager/welcome-hr/welcome-hr.co
     WelcomePmComponent,
     WelcomeAdminComponent,
     WelcomeHrComponent,
+    RefreshTokenComponent,
   ],
   imports: [
     BrowserModule,

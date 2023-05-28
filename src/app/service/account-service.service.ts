@@ -11,7 +11,7 @@ export class AccountService {
   headers: HttpHeaders = new HttpHeaders({ 'Content-Type': 'application/json' });
 
   private access_token: string | null = localStorage.getItem('jwt');
-  private refresh_token: string | null = localStorage.getItem('rjwt');
+  public refresh_token: string | null = localStorage.getItem('rjwt');
   currentUser: any =
     JSON.parse(localStorage.getItem('loggedUser') as string) || null;
   private loggedIn: boolean = !!this.access_token;
@@ -67,6 +67,12 @@ export class AccountService {
 
   loginWithoutPassword(email: any): Observable<any> {
     return this.http.get<any[]>(this.apiHost + "auth/generate-sttoken/" + email, {headers: this.headers});
+  }
+
+  refreshToken(refreshToken: any): Observable<any> {
+    return this.http.get<any>(this.apiHost + 'auth/refresh-token/' + refreshToken, {
+      headers: this.headers,
+    });
   }
 
   

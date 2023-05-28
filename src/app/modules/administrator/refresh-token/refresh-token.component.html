@@ -1,0 +1,20 @@
+<body>
+    <form class="container">
+        <mat-form-field class="example-full-width" style="color: white;">
+            <input matInput placeholder="Refresh token"  [formControl]="tokenFormControl"
+                [errorStateMatcher]="matcher" [(ngModel)]="refreshToken">
+            <mat-error *ngIf="!tokenFormControl.hasError('required')">
+            Please enter a refresh token
+            </mat-error>
+            <mat-error *ngIf="tokenFormControl.hasError('required')">
+            Refresh token is <strong>required</strong>
+            </mat-error>
+        </mat-form-field><br><br>
+
+        <button mat-stroked-button style="color: white;" (click)="refresh()"> 
+            Refresh token
+        </button>
+    </form>
+</body>
+
+

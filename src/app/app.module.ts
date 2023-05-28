@@ -34,6 +34,12 @@ import { FirstLoginComponent } from './modules/administrator/first-login/first-l
 import { ProjectManagerHomeComponent } from './modules/projectManager/project-manager-home/project-manager-home.component';
 import { SoftwareEngineerHomeComponent } from './modules/softwareEngineer/software-engineer-home/software-engineer-home.component';
 import { HrManagerHomeComponent } from './modules/hrManager/hr-manager-home/hr-manager-home.component';
+import { ListRequestsComponent } from './modules/administrator/list-requests/list-requests.component';
+import { WelcomePmComponent } from './modules/projectManager/welcome-pm/welcome-pm.component';
+import { WelcomeAdminComponent } from './modules/administrator/welcome-admin/welcome-admin.component';
+import { WelcomeHrComponent } from './modules/hrManager/welcome-hr/welcome-hr.component';
+import { RefreshTokenComponent } from './modules/administrator/refresh-token/refresh-token.component';
+import { ModifyPermissionsComponent } from './modules/administrator/modify-permissions/modify-permissions.component';
 
 @NgModule({
   declarations: [
@@ -51,6 +57,12 @@ import { HrManagerHomeComponent } from './modules/hrManager/hr-manager-home/hr-m
     ProjectManagerHomeComponent,
     SoftwareEngineerHomeComponent,
     HrManagerHomeComponent,
+    ListRequestsComponent,
+    WelcomePmComponent,
+    WelcomeAdminComponent,
+    WelcomeHrComponent,
+    RefreshTokenComponent,
+    ModifyPermissionsComponent,
   ],
   imports: [
     BrowserModule,

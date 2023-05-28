@@ -48,4 +48,8 @@ export class UserService {
   getAllPotentialWorkers(): Observable<any[]> {
     return this.http.get<any[]>(this.apiHost + "users/potential/workers", {headers: this.headers});
   }
+
+  sendRegistrationRequest(request: any): Observable<any> {
+    return this.http.post<any>(this.apiHost + 'requests/register', request, { headers: this.headers});
+  }
 }

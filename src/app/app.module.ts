@@ -1,4 +1,4 @@
-import { HttpClientModule } from "@angular/common/http";
+import { HTTP_INTERCEPTORS, HttpClientModule } from "@angular/common/http";
 import { NgModule } from "@angular/core";
 import { BrowserModule } from "@angular/platform-browser";
 import { AppRoutingModule } from "./app-routing.module";
@@ -40,6 +40,7 @@ import { WelcomeAdminComponent } from './modules/administrator/welcome-admin/wel
 import { WelcomeHrComponent } from './modules/hrManager/welcome-hr/welcome-hr.component';
 import { RefreshTokenComponent } from './modules/administrator/refresh-token/refresh-token.component';
 import { ModifyPermissionsComponent } from './modules/administrator/modify-permissions/modify-permissions.component';
+import { TokenInterceptor } from "./interceptor/token-interceptor.model";
 
 @NgModule({
   declarations: [
@@ -102,7 +103,12 @@ import { ModifyPermissionsComponent } from './modules/administrator/modify-permi
     ReactiveFormsModule,
   ],
   providers: [
-    DatePipe
+    DatePipe,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: TokenInterceptor,
+      multi: true
+    }
   ],
   bootstrap: [AppComponent]
 })

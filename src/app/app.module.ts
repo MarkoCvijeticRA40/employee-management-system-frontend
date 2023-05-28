@@ -39,6 +39,7 @@ import { WelcomePmComponent } from './modules/projectManager/welcome-pm/welcome-
 import { WelcomeAdminComponent } from './modules/administrator/welcome-admin/welcome-admin.component';
 import { WelcomeHrComponent } from './modules/hrManager/welcome-hr/welcome-hr.component';
 import { RefreshTokenComponent } from './modules/administrator/refresh-token/refresh-token.component';
+import { ModifyPermissionsComponent } from './modules/administrator/modify-permissions/modify-permissions.component';
 
 @NgModule({
   declarations: [
@@ -61,6 +62,7 @@ import { RefreshTokenComponent } from './modules/administrator/refresh-token/ref
     WelcomeAdminComponent,
     WelcomeHrComponent,
     RefreshTokenComponent,
+    ModifyPermissionsComponent,
   ],
   imports: [
     BrowserModule,

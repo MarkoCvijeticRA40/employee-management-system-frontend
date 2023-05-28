@@ -1,0 +1,26 @@
+<body>
+    <form class="container">
+    <mat-form-field class="example-full-width" style="color: white;">
+        <mat-select placeholder="Role" name="roles" [(ngModel)]="rolePermission.roleName">
+            <mat-option *ngFor="let role of roles" [value]="role.value">
+              {{ role.viewValue }}
+            </mat-option>
+          </mat-select>
+    </mat-form-field><br><br>
+
+    <mat-form-field class="example-full-width" style="color: white;">
+        <mat-select placeholder="Permission" name="permissions" [(ngModel)]="rolePermission.permissionName">
+            <mat-option *ngFor="let permission of permissions" [value]="permission">
+              {{ permission }}
+            </mat-option>
+          </mat-select>
+    </mat-form-field><br><br>
+
+    <button mat-stroked-button style="color: white;" (click)="add()"> 
+        Add
+    </button>
+    <button mat-stroked-button style="color: white;" (click)="remove()"> 
+        Remove
+    </button>
+  </form>
+</body>

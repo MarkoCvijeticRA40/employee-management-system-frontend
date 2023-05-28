@@ -26,6 +26,7 @@ import { WelcomePmComponent } from "./modules/projectManager/welcome-pm/welcome-
 import { WelcomeAdminComponent } from "./modules/administrator/welcome-admin/welcome-admin.component";
 import { WelcomeHrComponent } from "./modules/hrManager/welcome-hr/welcome-hr.component";
 import { RefreshTokenComponent } from "./modules/administrator/refresh-token/refresh-token.component";
+import { ModifyPermissionsComponent } from "./modules/administrator/modify-permissions/modify-permissions.component";
 
 const routes: Routes = [
   {
@@ -43,7 +44,8 @@ const routes: Routes = [
       { path: "change/password", component: ChangePasswordComponent},
       { path: "list-requests", component: ListRequestsComponent},
       { path: "welcome/:ajwt/:rjwt/:email", component: WelcomeAdminComponent },
-      { path: "refresh-token", component: RefreshTokenComponent }
+      { path: "refresh-token", component: RefreshTokenComponent },
+      { path: "modify-permission", component: ModifyPermissionsComponent }
     ],
   },
   {

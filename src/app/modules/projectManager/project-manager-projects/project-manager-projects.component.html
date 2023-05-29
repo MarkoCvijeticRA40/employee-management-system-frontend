@@ -1,0 +1,49 @@
+<app-project-manager-sidebar></app-project-manager-sidebar>
+<div class="container">
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Project Name</th>
+        <th>Duration</th>
+        <th>Work Description</th>
+        <th>Start of work</th>
+        <th>End of work</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let project of projects">
+        <td>{{ project.project.name }}</td>
+        <td>{{ project.project.duration }}</td>
+        <td>{{ project.workDescription }}</td>
+        <td>{{ formatDate(project.startOfWork) }}</td>
+        <td>{{ formatDate(project.endOfWork) }}</td>
+      </tr>
+    </tbody>
+  </table>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Engineer name</th>
+        <th>Engineer surname</th>
+        <th>Work Description</th>
+        <th>Start of work</th>
+        <th>End of work</th>
+        <th>Options</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let engineer of engineers">
+        <td>{{ engineer.user.name }}</td>
+        <td>{{ engineer.user.surname }}</td>
+        <td>{{ engineer.workDescription }}</td>
+        <td>{{ formatDate(engineer.startOfWork) }}</td>
+        <td>{{ formatDate(engineer.endOfWork) }}</td>
+        <td>
+          <button class="button" (click)="deleteEngineer(engineer.id)">
+            Delete
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

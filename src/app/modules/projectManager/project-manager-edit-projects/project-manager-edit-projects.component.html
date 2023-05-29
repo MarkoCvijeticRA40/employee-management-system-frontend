@@ -1,0 +1,73 @@
+<app-project-manager-sidebar></app-project-manager-sidebar>
+<div class="container">
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Project Name</th>
+        <th>Duration</th>
+        <th>Work Description</th>
+        <th>Start of work</th>
+        <th>End of work</th>
+        <th>Option add</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let project of projects">
+        <td>{{ project.project.name }}</td>
+        <td>{{ project.project.duration }}</td>
+        <td>{{ project.workDescription }}</td>
+        <td>{{ formatDate(project.startOfWork) }}</td>
+        <td>{{ formatDate(project.endOfWork) }}</td>
+        <td>
+          <button class="button" (click)="addEngineer(project.project)">
+            Add
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <form
+    class="form"
+    *ngIf="flag === true"
+    method="POST"
+    (submit)="addEngineerToProject()"
+  >
+    <div class="input">
+      <label>Select User</label>
+      <select name="user" [(ngModel)]="projectUserAssignment.userId">
+        <option *ngFor="let engineer of engineers" [value]="engineer.id">
+          {{ engineer.name }} {{ engineer.surname }}
+        </option>
+      </select>
+    </div>
+    <div class="input">
+      <label>Selected Project</label>
+      <input type="text" name="project" [(ngModel)]="projectName" disabled />
+    </div>
+    <div class="input">
+      <label>Work Description</label>
+      <input
+        type="text"
+        name="description"
+        [(ngModel)]="projectUserAssignment.workDescription"
+      />
+    </div>
+    <div class="input">
+      <label>Start of work</label>
+      <input
+        type="datetime-local"
+        name="startOfWork"
+        [(ngModel)]="projectUserAssignment.startOfWork"
+      />
+    </div>
+    <div class="input">
+      <label>End of work</label>
+      <input
+        type="datetime-local"
+        name="endOfWork"
+        [(ngModel)]="projectUserAssignment.endOfWork"
+      />
+    </div>
+    <input class="add-button" type="submit" value="Add" />
+  </form>
+</div>

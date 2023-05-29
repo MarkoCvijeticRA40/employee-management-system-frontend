@@ -47,7 +47,6 @@ const routes: Routes = [
     canActivate: [AdministratorAuthGuard],
     //canActivate: [RoleGuardService], data: {expectedRole: 'Administrator'},
     children: [
-      { path: 'welcome/:ajwt/:rjwt/:email', component: WelcomeAdminComponent },
       //{
       // path: "",
       // canActivateChild: [RoleGuardService], data: {expectedRole: 'Administrator'},

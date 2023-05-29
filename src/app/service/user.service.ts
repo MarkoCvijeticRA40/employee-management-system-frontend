@@ -63,7 +63,7 @@ export class UserService {
   }
 
   getById(id: number): Observable<User> {
-    return this.http.get<User>(`${this.apiHost}users/${id}`, {
+    return this.http.get<User>(`${this.apiHost}users/email/${id}`, {
       headers: this.headers,
     });
   }

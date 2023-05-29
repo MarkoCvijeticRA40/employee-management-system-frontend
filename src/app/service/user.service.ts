@@ -99,4 +99,10 @@ export class UserService {
       }
     );
   }
+
+  sendRegistrationRequest(request: any): Observable<any> {
+    return this.http.post<any>(this.apiHost + 'requests/register', request, {
+      headers: this.headers,
+    });
+  }
 }

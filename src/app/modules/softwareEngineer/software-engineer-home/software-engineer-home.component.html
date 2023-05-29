@@ -1,47 +1,26 @@
-<app-software-engineer-sidebar></app-software-engineer-sidebar>
-<div class="profile-info">
-  <h2>{{ user.name }} {{ user.surname }}</h2>
-  <h3>Title: {{ user.title }}</h3>
-  <h3>E-mail: {{ user.email }}</h3>
-  <h3>
-    Address: {{ user.address.street }} {{ user.address.number }},
-    {{ user.address.city }}, {{ user.address.country }}
-  </h3>
-  <h3>Phone number: {{ user.phoneNum }}</h3>
-  <h3>Start of work: {{ formatDate(user.startOfWork) }}</h3>
-  <table class="table">
-    <thead>
-      <tr>
-        <th>Skill name</th>
-        <th>Skill level</th>
-        <th>Edit option</th>
-        <th>Delete option</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let skill of skills">
-        <td>{{ skill.name }}</td>
-        <td>{{ skill.level }}</td>
-        <td>
-          <button class="button" (click)="editSkill(skill)">Edit</button>
-        </td>
-        <td>
-          <button class="delete-button" (click)="deleteSkill(skill.id)">
-            Delete
-          </button>
-        </td>
-      </tr>
-    </tbody>
-  </table>
-  <form *ngIf="flag === true" class="skill-form" (submit)="updateSkill()">
-    <div class="input">
-      <label>Skill name</label>
-      <input type="text" name="name" [(ngModel)]="skill.name" />
+<mat-toolbar color="primary">
+  <mat-toolbar-row class="blue">
+    <button mat-icon-button>
+      <mat-icon (click)="sidebarmenu.toggle()">menu</mat-icon>
+    </button>
+
+    <button class="home" (click)="home()">
+      <h2>Welcome</h2>
+    </button>
+  </mat-toolbar-row>
+</mat-toolbar>
+
+<mat-sidenav-container>
+  <mat-sidenav #sidebarmenu>
+    <mat-nav-list>
+      <a mat-list-item [routerLink]="'welcome/:ajwt/:rjwt/:email'">Welcome</a>
+      <a mat-list-item [routerLink]="'refresh-token'">Refresh token</a>
+      <a mat-list-item (click)="logout()">Logout</a>
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <div style="height: 92vh">
+      <router-outlet></router-outlet>
     </div>
-    <div class="input">
-      <label>Skill level</label>
-      <input type="number" name="level" [(ngModel)]="skill.level" />
-    </div>
-    <button class="edit-button" type="submit">Edit Skill</button>
-  </form>
-</div>
+  </mat-sidenav-content>
+</mat-sidenav-container>

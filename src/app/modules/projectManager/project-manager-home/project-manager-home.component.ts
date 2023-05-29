@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { UserService } from 'src/app/service/user.service';
+import { Router } from '@angular/router';
 import { User } from 'src/app/model/user';
+import { AccountService } from 'src/app/service/account-service.service';
+import { UserService } from 'src/app/service/user.service';
 import { DatePipe } from '@angular/common';
 
 @Component({
@@ -10,27 +12,27 @@ import { DatePipe } from '@angular/common';
 })
 export class ProjectManagerHomeComponent implements OnInit {
   user: User = new User();
+  currentUser: User = new User();
 
-  constructor(private userService: UserService, private datePipe: DatePipe) {}
+  constructor(
+    private userService: UserService,
+    private accountService: AccountService,
+    private router: Router
+  ) {}
 
   ngOnInit(): void {
-    this.userService.getById(5).subscribe((res) => {
-      this.user = res;
-    });
+    //hardkodovano dok ne uvedemo tokene,samo stavite da bude hr manager neki nece moci da pristupi zbog authguarda ili zakomentarisite authguard
+    this.userService
+      .getById(this.accountService.currentUser.id)
+      .subscribe((res) => {
+        this.currentUser = res;
+      });
   }
 
-  public formatDate(date: any): string {
-    if (date && Array.isArray(date) && date.length >= 6) {
-      const [year, month, day, hour, minute, second] = date;
-      return new Date(
-        year,
-        month - 1,
-        day,
-        hour,
-        minute,
-        second
-      ).toDateString();
-    }
-    return '';
+  public home() {}
+
+  logout() {
+    this.accountService.logout();
+    this.router.navigate(['login']);
   }
 }

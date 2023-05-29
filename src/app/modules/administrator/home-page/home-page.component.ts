@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { AccountService } from 'src/app/service/account-service.service';
 import { UserService } from 'src/app/service/user.service';
 
 @Component({
@@ -9,14 +10,19 @@ import { UserService } from 'src/app/service/user.service';
 })
 export class HomePageComponent implements OnInit {
 
-  constructor(private router: Router) { }
+  constructor(private accountService: AccountService, private router: Router) { }
 
   ngOnInit(): void {
-    this.router.navigate(['employees/review']);
+    
   }
 
   public home(){
     this.ngOnInit();
+  }
+
+  logout() {
+    this.accountService.logout();
+    this.router.navigate(['login'])
   }
 
 }

@@ -31,7 +31,7 @@ export class SearchUsersComponent implements OnInit {
     this.startDate = new Date();
     this.endDate = new Date();
     this.endDate.setDate(this.endDate.getDate() + 1);
-    this.userService.findByRoleName("Software engineer\n").subscribe(res => {
+    this.userService.findByRoleName("Software engineer").subscribe(res => {
       this.engineers = res;
         this.allEngineers = this.engineers;
     });
@@ -52,6 +52,11 @@ export class SearchUsersComponent implements OnInit {
       } else {
         this.userService.searchEngineers(this.email, this.name, this.lastname, this.startDate.toString(), this.endDate.toString()).subscribe(res => {
           this.engineers = res;
+            this.email = '';
+            this.name = '';
+            this.lastname = '';
+            this.startDate = new Date();
+            this.endDate = new Date();
         });
       }
     }
@@ -69,10 +74,12 @@ export class SearchUsersComponent implements OnInit {
     return this.lastname === '';
   }
 
-  // Function for formatting the date
-  formatDate(date: string): string {
-    const formattedDate = new Date(date);
-    return this.datePipe.transform(formattedDate, 'dd/MM/yyyy') || '';
+  formatDate(date: any): string {
+    if (date && Array.isArray(date) && date.length >= 6) {
+      const [year, month, day, hour, minute, second] = date;
+      return new Date(year, month - 1, day, hour, minute, second).toDateString();
+    }
+    return '';
   }
 
   // Function to create a user

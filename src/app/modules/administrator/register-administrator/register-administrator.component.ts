@@ -11,27 +11,24 @@ export class RegisterAdministratorComponent implements OnInit {
 
   constructor(private userService : UserService) { }
 
-  currentUser : User = new User();
 
   newAdministrator : User = new User();
 
   confirmPassword : String = '';
 
   ngOnInit(): void {
-    this.userService.getById(20).subscribe(res => {
-      this.currentUser = res;
-    });
-    /*this.newAdministrator.name = "Milan";
-    this.newAdministrator.surname = "Milanovic";
-    this.newAdministrator.email = "milanovic@gmail.com"
-    this.newAdministrator.password = "Milan123";
-    this.confirmPassword = "Milan123";
-    this.newAdministrator.address.street = "Arsenije Carnojevica"
-    this.newAdministrator.address.country = "Srbija";
-    this.newAdministrator.address.number = "13";
-    this.newAdministrator.address.city = "Sremska Mitrovica";
-    this.newAdministrator.phoneNum = "0640304321";
-    this.newAdministrator.title = "Diplomirani programer";*/
+    
+    // this.newAdministrator.name = "Milan";
+    // this.newAdministrator.surname = "Milanovic";
+    // this.newAdministrator.email = "milanovic@gmail.com"
+    // this.newAdministrator.password = "Milan123";
+    // this.confirmPassword = "Milan123";
+    // this.newAdministrator.address.street = "Arsenije Carnojevica"
+    // this.newAdministrator.address.country = "Srbija";
+    // this.newAdministrator.address.number = "13";
+    // this.newAdministrator.address.city = "Sremska Mitrovica";
+    // this.newAdministrator.phoneNum = "0640304321";
+    // this.newAdministrator.title = "Diplomirani programer";
   }
 
   public createAdministrator() {
@@ -58,7 +55,17 @@ export class RegisterAdministratorComponent implements OnInit {
     this.newAdministrator.roleNames.push("Administrator");
     this.userService.registerUser(this.newAdministrator).subscribe(res => {
       this.newAdministrator = res;
-      alert("You have successfully created a new administrator.");
+      if(this.newAdministrator != null){
+        alert("You have successfully created a new administrator.");
+        this.newAdministrator = new User();
+        this.confirmPassword = '';
+      }
+      else 
+      {
+        alert("There is already a user with that email");
+        this.newAdministrator = new User();
+        this.confirmPassword = '';
+      }
     });
   }
 

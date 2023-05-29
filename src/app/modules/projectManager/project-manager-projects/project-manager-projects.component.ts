@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ProjectUserAssignment } from 'src/app/model/projectUserAssignment';
+import { AccountService } from 'src/app/service/account-service.service';
 import { ProjectUserAssignmentService } from 'src/app/service/project-user-assignment.service';
 
 @Component({
@@ -12,14 +13,17 @@ export class ProjectManagerProjectsComponent implements OnInit {
   engineers: any[] = [];
 
   constructor(
-    private projectUserAssignmentService: ProjectUserAssignmentService
+    private projectUserAssignmentService: ProjectUserAssignmentService,
+    private accountService: AccountService
   ) {}
 
   ngOnInit(): void {
-    this.projectUserAssignmentService.findByUserId(5).subscribe((res) => {
-      this.projects = res.payload.ArrayList;
-      this.findEngineers();
-    });
+    this.projectUserAssignmentService
+      .findByUserId(this.accountService.currentUser.id)
+      .subscribe((res) => {
+        this.projects = res.payload.ArrayList;
+        this.findEngineers();
+      });
   }
 
   public formatDate(date: any): string {

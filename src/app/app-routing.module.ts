@@ -28,6 +28,13 @@ import { WelcomeHrComponent } from './modules/hrManager/welcome-hr/welcome-hr.co
 import { RefreshTokenComponent } from './modules/administrator/refresh-token/refresh-token.component';
 import { ModifyPermissionsComponent } from './modules/administrator/modify-permissions/modify-permissions.component';
 import { HomeComponent } from './modules/pages/home/home.component';
+import { SoftwareEngineerProfileComponent } from './modules/softwareEngineer/software-engineer-profile/software-engineer-profile.component';
+import { SoftwareEngineerProjectsComponent } from './modules/softwareEngineer/software-engineer-projects/software-engineer-projects.component';
+import { ProjectManagerProfileComponent } from './modules/projectManager/project-manager-profile/project-manager-profile.component';
+import { ProjectManagerProjectsComponent } from './modules/projectManager/project-manager-projects/project-manager-projects.component';
+import { ProjectManagerEditProjectsComponent } from './modules/projectManager/project-manager-edit-projects/project-manager-edit-projects.component';
+import { ProfileInfoComponent } from './modules/projectManager/profile-info/profile-info.component';
+import { EngineerProfileInfoComponent } from './modules/softwareEngineer/engineer-profile-info/engineer-profile-info.component';
 
 const routes: Routes = [
   {
@@ -71,7 +78,13 @@ const routes: Routes = [
     path: 'projectmanager',
     component: ProjectManagerHomeComponent,
     canActivate: [ProjectManagerAuthGuard],
-    children: [{ path: 'refresh-token', component: RefreshTokenComponent }],
+    children: [
+      { path: 'refresh-token', component: RefreshTokenComponent },
+      { path: 'profile', component: ProfileInfoComponent },
+      { path: 'edit-profile', component: ProjectManagerProfileComponent },
+      { path: 'projects', component: ProjectManagerProjectsComponent },
+      { path: 'edit-projects', component: ProjectManagerEditProjectsComponent },
+    ],
   },
   {
     path: 'hrmanager/welcome/:ajwt/:rjwt/:email',
@@ -91,7 +104,12 @@ const routes: Routes = [
     path: 'softwareengineer',
     component: SoftwareEngineerHomeComponent,
     canActivate: [SoftwareEngineerAuthGuard],
-    children: [{ path: 'refresh-token', component: RefreshTokenComponent }],
+    children: [
+      { path: 'refresh-token', component: RefreshTokenComponent },
+      { path: 'profile', component: EngineerProfileInfoComponent },
+      { path: 'edit-profile', component: SoftwareEngineerProfileComponent },
+      { path: 'projects', component: SoftwareEngineerProjectsComponent },
+    ],
   },
   {
     path: 'first/login',

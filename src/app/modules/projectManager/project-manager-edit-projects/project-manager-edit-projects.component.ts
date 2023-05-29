@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ProjectUserAssignmentDTO } from 'src/app/dto/projectUserAssignmentDTO';
+import { AccountService } from 'src/app/service/account-service.service';
 import { ProjectUserAssignmentService } from 'src/app/service/project-user-assignment.service';
 import { UserService } from 'src/app/service/user.service';
 
@@ -21,13 +22,16 @@ export class ProjectManagerEditProjectsComponent implements OnInit {
   constructor(
     private projectUserAssignmentService: ProjectUserAssignmentService,
     private userService: UserService,
+    private accountService: AccountService,
     private router: Router
   ) {}
 
   ngOnInit(): void {
-    this.projectUserAssignmentService.findByUserId(5).subscribe((res) => {
-      this.projects = res.payload.ArrayList;
-    });
+    this.projectUserAssignmentService
+      .findByUserId(this.accountService.currentUser.id)
+      .subscribe((res) => {
+        this.projects = res.payload.ArrayList;
+      });
 
     this.userService.getAllPotentialWorkers().subscribe((res) => {
       this.employees = res;

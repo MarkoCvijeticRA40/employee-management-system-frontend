@@ -49,6 +49,8 @@ import { RefreshTokenComponent } from './modules/administrator/refresh-token/ref
 import { ModifyPermissionsComponent } from './modules/administrator/modify-permissions/modify-permissions.component';
 import { TokenInterceptor } from './interceptor/token-interceptor.model';
 import { AdministratorAuthGuard } from './authguard/administrator-auth-guard';
+import { ProfileInfoComponent } from './modules/projectManager/profile-info/profile-info.component';
+import { EngineerProfileInfoComponent } from './modules/softwareEngineer/engineer-profile-info/engineer-profile-info.component';
 
 @NgModule({
   declarations: [
@@ -79,6 +81,8 @@ import { AdministratorAuthGuard } from './authguard/administrator-auth-guard';
     WelcomeHrComponent,
     RefreshTokenComponent,
     ModifyPermissionsComponent,
+    ProfileInfoComponent,
+    EngineerProfileInfoComponent,
   ],
   imports: [
     BrowserModule,

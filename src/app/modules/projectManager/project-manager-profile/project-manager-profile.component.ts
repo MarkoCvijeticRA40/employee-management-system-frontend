@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { User } from 'src/app/model/user';
+import { AccountService } from 'src/app/service/account-service.service';
 import { UserService } from 'src/app/service/user.service';
 
 @Component({
@@ -11,12 +12,18 @@ import { UserService } from 'src/app/service/user.service';
 export class ProjectManagerProfileComponent implements OnInit {
   user: User = new User();
 
-  constructor(private userService: UserService, private router: Router) {}
+  constructor(
+    private userService: UserService,
+    private accountService: AccountService,
+    private router: Router
+  ) {}
 
   ngOnInit(): void {
-    this.userService.getById(5).subscribe((res) => {
-      this.user = res;
-    });
+    this.userService
+      .getById(this.accountService.currentUser.id)
+      .subscribe((res) => {
+        this.user = res;
+      });
   }
 
   public editProfile() {

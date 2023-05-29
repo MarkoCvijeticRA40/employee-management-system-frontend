@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ProjectUserAssignment } from 'src/app/model/projectUserAssignment';
+import { AccountService } from 'src/app/service/account-service.service';
 import { ProjectUserAssignmentService } from 'src/app/service/project-user-assignment.service';
 
 @Component({
@@ -13,13 +14,16 @@ export class SoftwareEngineerProjectsComponent implements OnInit {
   project: ProjectUserAssignment = new ProjectUserAssignment();
 
   constructor(
-    private projectUserAssignmentService: ProjectUserAssignmentService
+    private projectUserAssignmentService: ProjectUserAssignmentService,
+    private accountService: AccountService
   ) {}
 
   ngOnInit(): void {
-    this.projectUserAssignmentService.findByUserId(1).subscribe((res) => {
-      this.projects = res.payload.ArrayList;
-    });
+    this.projectUserAssignmentService
+      .findByUserId(this.accountService.currentUser.id)
+      .subscribe((res) => {
+        this.projects = res.payload.ArrayList;
+      });
   }
 
   public formatDate(date: any): string {
@@ -51,9 +55,11 @@ export class SoftwareEngineerProjectsComponent implements OnInit {
     this.projectUserAssignmentService
       .updateProject(this.project.id, this.project)
       .subscribe((res) => {
-        this.projectUserAssignmentService.findByUserId(1).subscribe((res) => {
-          this.projects = res.payload.ArrayList;
-        });
+        this.projectUserAssignmentService
+          .findByUserId(this.accountService.currentUser.id)
+          .subscribe((res) => {
+            this.projects = res.payload.ArrayList;
+          });
         alert('Project is edited succesfully!');
         this.flag = false;
       });

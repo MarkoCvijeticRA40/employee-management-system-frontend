@@ -1,4 +1,5 @@
 import { DatePipe } from '@angular/common';
+import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Skill } from 'src/app/model/skill';
 import { User } from 'src/app/model/user';
@@ -21,7 +22,8 @@ export class EngineerProfileInfoComponent implements OnInit {
     private skillService: SkillService,
     private userService: UserService,
     private accountService: AccountService,
-    private datePipe: DatePipe
+    private datePipe: DatePipe,
+    private http: HttpClient
   ) {}
 
   ngOnInit(): void {
@@ -77,5 +79,25 @@ export class EngineerProfileInfoComponent implements OnInit {
       });
       alert('Skill is deleted succesfully!');
     });
+  }
+
+  downloadCV() {
+    this.http
+      .get(
+        'https://localhost:443/cv/user/' + this.accountService.currentUser.id,
+        {
+          responseType: 'blob',
+        }
+      )
+      .subscribe((data: Blob) => {
+        const downloadURL = window.URL.createObjectURL(data);
+        const link = document.createElement('a');
+        link.href = downloadURL;
+        link.download =
+          this.accountService.currentUser.name +
+          this.accountService.currentUser.surname +
+          '.docx';
+        link.click();
+      });
   }
 }

@@ -26,6 +26,12 @@ export class SkillService {
     });
   }
 
+  addSkill(id: any, skill: any): Observable<any> {
+    return this.http.post<any>(this.apiHost + 'skills/user/' + id, skill, {
+      headers: this.headers,
+    });
+  }
+
   deleteSkill(id: any): Observable<any> {
     return this.http.delete<any>(`${this.apiHost}skills/${id}`, {
       headers: this.headers,

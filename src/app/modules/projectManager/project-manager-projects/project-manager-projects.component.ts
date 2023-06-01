@@ -22,8 +22,16 @@ export class ProjectManagerProjectsComponent implements OnInit {
       .findByUserId(this.accountService.currentUser.id)
       .subscribe((res) => {
         this.projects = res.payload.ArrayList;
+        this.convertDate();
         this.findEngineers();
       });
+  }
+
+  private convertDate() {
+    for (var project of this.projects) {
+      project.startOfWork = new Date(project.startOfWork);
+      project.endOfWork = new Date(project.endOfWork);
+    }
   }
 
   public formatDate(date: any): string {
@@ -49,7 +57,6 @@ export class ProjectManagerProjectsComponent implements OnInit {
             this.engineers.push(engineer);
           }
         }
-        console.log(this.engineers);
       });
   }
 

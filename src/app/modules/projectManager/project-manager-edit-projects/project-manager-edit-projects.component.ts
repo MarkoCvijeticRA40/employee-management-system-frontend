@@ -15,9 +15,12 @@ export class ProjectManagerEditProjectsComponent implements OnInit {
     new ProjectUserAssignmentDTO();
   projects: any[] = [];
   employees: any[] = [];
+  potentialEngineers: any[] = [];
+  alreadyEngineers: any[] = [];
   engineers: any[] = [];
   projectName: string = '';
   flag: boolean = false;
+  flagEngineer: boolean = true;
 
   constructor(
     private projectUserAssignmentService: ProjectUserAssignmentService,
@@ -31,16 +34,24 @@ export class ProjectManagerEditProjectsComponent implements OnInit {
       .findByUserId(this.accountService.currentUser.id)
       .subscribe((res) => {
         this.projects = res.payload.ArrayList;
+        this.convertDate();
       });
 
     this.userService.getAllPotentialWorkers().subscribe((res) => {
       this.employees = res;
       for (var employee of this.employees) {
         if (employee.roleNames.includes('Software engineer')) {
-          this.engineers.push(employee);
+          this.potentialEngineers.push(employee);
         }
       }
     });
+  }
+
+  private convertDate() {
+    for (var project of this.projects) {
+      project.startOfWork = new Date(project.startOfWork);
+      project.endOfWork = new Date(project.endOfWork);
+    }
   }
 
   public formatDate(date: any): string {
@@ -59,9 +70,34 @@ export class ProjectManagerEditProjectsComponent implements OnInit {
   }
 
   public addEngineer(project: any) {
+    this.projectUserAssignmentService
+      .findByProjectId(project.id)
+      .subscribe((res) => {
+        for (var engineer of res.payload.ArrayList) {
+          if (engineer.user.roleNames.includes('Software engineer')) {
+            this.alreadyEngineers.push(engineer);
+          }
+        }
+        this.filterEngineers();
+      });
     this.projectUserAssignment.projectId = project.id;
     this.projectName = project.name;
     this.flag = true;
+  }
+
+  private filterEngineers() {
+    for (var potentialEngineer of this.potentialEngineers) {
+      this.flagEngineer = true;
+      for (var alreadyEngineer of this.alreadyEngineers) {
+        if (potentialEngineer.id === alreadyEngineer.user.id) {
+          this.flagEngineer = false;
+          break;
+        }
+      }
+      if (this.flagEngineer === true) {
+        this.engineers.push(potentialEngineer);
+      }
+    }
   }
 
   public addEngineerToProject() {

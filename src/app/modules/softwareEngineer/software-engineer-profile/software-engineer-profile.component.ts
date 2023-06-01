@@ -32,7 +32,7 @@ export class SoftwareEngineerProfileComponent implements OnInit {
         .editProjectManagerAccount(this.user.id, this.user)
         .subscribe((res) => {
           alert('Software engineer account is edited!');
-          this.router.navigateByUrl('/softwareengineer/home');
+          this.router.navigateByUrl('softwareengineer/profile');
         });
     } else {
       alert('Please, fill in all fields!');

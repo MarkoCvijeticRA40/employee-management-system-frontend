@@ -7,18 +7,20 @@ import { UserService } from 'src/app/service/user.service';
 @Component({
   selector: 'app-create-project',
   templateUrl: './create-project.component.html',
-  styleUrls: ['./create-project.component.css']
+  styleUrls: ['./create-project.component.css'],
 })
 export class CreateProjectComponent implements OnInit {
-
-  constructor(private userService: UserService,private projectService: ProjectService) { }
+  constructor(
+    private userService: UserService,
+    private projectService: ProjectService
+  ) {}
 
   project: Project = new Project();
 
   employees: User[] = [];
 
   ngOnInit(): void {
-    this.userService.getAllPotentialWorkers().subscribe(res => {
+    this.userService.getAllPotentialWorkers().subscribe((res) => {
       this.employees = res;
     });
     /*
@@ -27,11 +29,11 @@ export class CreateProjectComponent implements OnInit {
   }
 
   create() {
-    this.projectService.createProject(this.project).subscribe(res => {
+    this.projectService.createProject(this.project).subscribe((res) => {
       this.project = res;
-        this.project = new Project();
-        alert("Project successfully created.");
-          this.project = new Project();
+      this.project = new Project();
+      alert('Project successfully created.');
+      this.project = new Project();
     });
   }
 }

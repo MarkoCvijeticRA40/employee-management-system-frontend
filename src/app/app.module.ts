@@ -51,6 +51,7 @@ import { TokenInterceptor } from './interceptor/token-interceptor.model';
 import { AdministratorAuthGuard } from './authguard/administrator-auth-guard';
 import { ProfileInfoComponent } from './modules/projectManager/profile-info/profile-info.component';
 import { EngineerProfileInfoComponent } from './modules/softwareEngineer/engineer-profile-info/engineer-profile-info.component';
+import { AddSkillComponent } from './modules/softwareEngineer/add-skill/add-skill.component';
 
 @NgModule({
   declarations: [
@@ -83,6 +84,7 @@ import { EngineerProfileInfoComponent } from './modules/softwareEngineer/enginee
     ModifyPermissionsComponent,
     ProfileInfoComponent,
     EngineerProfileInfoComponent,
+    AddSkillComponent,
   ],
   imports: [
     BrowserModule,

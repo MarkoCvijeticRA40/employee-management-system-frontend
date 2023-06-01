@@ -32,7 +32,7 @@ export class ProjectManagerProfileComponent implements OnInit {
         .editProjectManagerAccount(this.user.id, this.user)
         .subscribe((res) => {
           alert('Project manager account is edited!');
-          this.router.navigateByUrl('/projectmanager/home');
+          this.router.navigateByUrl('projectmanager/profile');
         });
     } else {
       alert('Please, fill in all fields!');

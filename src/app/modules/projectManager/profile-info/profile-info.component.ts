@@ -23,11 +23,12 @@ export class ProfileInfoComponent implements OnInit {
       .getById(this.accountService.currentUser.id)
       .subscribe((res) => {
         this.user = res;
+        this.user.startOfWork = new Date(this.user.startOfWork);
       });
   }
 
   public formatDate(date: any): string {
-    if (date && Array.isArray(date) && date.length >= 6) {
+    if (date && Array.isArray(date) && date.length >= 5) {
       const [year, month, day, hour, minute, second] = date;
       return new Date(
         year,

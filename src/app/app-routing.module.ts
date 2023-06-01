@@ -35,6 +35,7 @@ import { ProjectManagerProjectsComponent } from './modules/projectManager/projec
 import { ProjectManagerEditProjectsComponent } from './modules/projectManager/project-manager-edit-projects/project-manager-edit-projects.component';
 import { ProfileInfoComponent } from './modules/projectManager/profile-info/profile-info.component';
 import { EngineerProfileInfoComponent } from './modules/softwareEngineer/engineer-profile-info/engineer-profile-info.component';
+import { AddSkillComponent } from './modules/softwareEngineer/add-skill/add-skill.component';
 
 const routes: Routes = [
   {
@@ -108,6 +109,7 @@ const routes: Routes = [
       { path: 'profile', component: EngineerProfileInfoComponent },
       { path: 'edit-profile', component: SoftwareEngineerProfileComponent },
       { path: 'projects', component: SoftwareEngineerProjectsComponent },
+      { path: 'add-skill', component: AddSkillComponent },
     ],
   },
   {

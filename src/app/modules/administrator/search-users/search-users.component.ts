@@ -32,7 +32,7 @@ export class SearchUsersComponent implements OnInit {
     this.endDate = new Date();
     this.endDate.setDate(this.endDate.getDate() + 1);
     this.userService.findByRoleName("Software engineer").subscribe(res => {
-      this.engineers = res;
+      this.engineers = res.payload.ArrayList;
         this.allEngineers = this.engineers;
     });
   }
@@ -51,12 +51,12 @@ export class SearchUsersComponent implements OnInit {
         this.engineers = this.allEngineers;
       } else {
         this.userService.searchEngineers(this.email, this.name, this.lastname, this.startDate.toString(), this.endDate.toString()).subscribe(res => {
-          this.engineers = res;
-            this.email = '';
+            this.engineers = res.payload.ArrayList;
+            /*this.email = '';
             this.name = '';
             this.lastname = '';
             this.startDate = new Date();
-            this.endDate = new Date();
+            this.endDate = new Date();*/
         });
       }
     }
@@ -75,13 +75,16 @@ export class SearchUsersComponent implements OnInit {
   }
 
   formatDate(date: any): string {
-    if (date && Array.isArray(date) && date.length >= 6) {
-      const [year, month, day, hour, minute, second] = date;
-      return new Date(year, month - 1, day, hour, minute, second).toDateString();
+    if (date && typeof date === 'string') {
+      const formattedDate = new Date(date);
+      const day = formattedDate.getDate();
+      const month = formattedDate.getMonth() + 1; // Months are zero-based
+      const year = formattedDate.getFullYear();
+      return `${day}/${month}/${year}`;
     }
     return '';
   }
-
+  
   // Function to create a user
   createUser() {
     this.userService.registerUser(this.user).subscribe(res => {

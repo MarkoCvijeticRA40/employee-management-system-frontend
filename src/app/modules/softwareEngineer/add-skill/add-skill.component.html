@@ -1,0 +1,13 @@
+<div class="container">
+  <form class="skill-form" (submit)="addSkill()">
+    <div class="input">
+      <label>Skill name</label>
+      <input type="text" name="name" [(ngModel)]="skill.name" />
+    </div>
+    <div class="input">
+      <label>Skill level</label>
+      <input type="text" name="level" [(ngModel)]="level" />
+    </div>
+    <button class="button" type="submit">Add Skill</button>
+  </form>
+</div>

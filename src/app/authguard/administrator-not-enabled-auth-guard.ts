@@ -4,20 +4,21 @@ import { Observable, of } from 'rxjs';
 import { switchMap, catchError } from 'rxjs/operators';
 import { User } from 'src/app/model/user';
 import { UserService } from 'src/app/service/user.service';
+import { AccountService } from '../service/account-service.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AdministratorNotEnabledAuthGuard implements CanActivate {
-  constructor(private router: Router, private userService: UserService) {}
+  constructor(private router: Router, private userService: UserService, private accountService: AccountService) {}
 
   canActivate(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot
   ): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-    return this.userService.getById(34).pipe(
+    return this.userService.getById(this.accountService.currentUser.id).pipe(
       switchMap((user: User | null) => {
-        if (user && user.roleNames.includes('Administrator') && user.accountEnabled == false) {
+        if (user && user.roleNames.includes('Administrator') && user.startOfWork === null) {
           return of(true);
         } else {
           return of(false);

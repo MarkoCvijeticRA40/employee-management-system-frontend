@@ -34,8 +34,10 @@ export class LoginComponent implements OnInit {
       console.log(res);
       this.accountService.getMyInfo(this.data.email).subscribe(res => {
         this.accountService.currentUser = res.payload.User;
+        this.accountService.role = res.payload.User.roleNames[0];
         this.currentUser = res.payload.User;
-        localStorage.setItem('loggedUser', JSON.stringify(this.currentUser));   
+        localStorage.setItem('role', res.payload.User.roleNames[0]);
+        localStorage.setItem('loggedUser', JSON.stringify(this.currentUser));    
         if (this.currentUser.roleNames[0] === 'Administrator') {
             this.router.navigate(['administrator']);
         }

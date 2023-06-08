@@ -1,3 +1,4 @@
+import { DatePipe } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { User } from 'src/app/model/user';
@@ -7,24 +8,31 @@ import { UserService } from 'src/app/service/user.service';
 @Component({
   selector: 'app-software-engineer-home',
   templateUrl: './software-engineer-home.component.html',
-  styleUrls: ['./software-engineer-home.component.css']
+  styleUrls: ['./software-engineer-home.component.css'],
 })
 export class SoftwareEngineerHomeComponent implements OnInit {
+  user: User = new User();
+  skills: any[] = [];
+  flag: boolean = false;
 
-  currentUser : User = new User();
+  currentUser: User = new User();
 
-  constructor(private userService : UserService, private accountService: AccountService, private router: Router) { }
+  constructor(
+    private userService: UserService,
+    private accountService: AccountService,
+    private router: Router
+  ) {}
 
   ngOnInit(): void {
     //hardkodovano dok ne uvedemo tokene,samo stavite da bude hr manager neki nece moci da pristupi zbog authguarda ili zakomentarisite authguard
-    this.userService.getById(this.accountService.currentUser.id).subscribe(res => {
-      this.currentUser = res;
-    });
+    this.userService
+      .getById(this.accountService.currentUser.id)
+      .subscribe((res) => {
+        this.currentUser = res;
+      });
   }
 
-  public home(){
-    
-  }
+  public home() {}
 
   logout() {
     this.accountService.logout();

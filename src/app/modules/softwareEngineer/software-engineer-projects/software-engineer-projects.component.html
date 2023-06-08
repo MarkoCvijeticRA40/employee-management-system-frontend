@@ -1,0 +1,37 @@
+<div class="container">
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Project Name</th>
+        <th>Duration</th>
+        <th>Work Description</th>
+        <th>Start of work</th>
+        <th>End of work</th>
+        <th>Option edit</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let project of projects">
+        <td>{{ project.project.name }}</td>
+        <td>{{ project.project.duration }}</td>
+        <td>{{ project.workDescription }}</td>
+        <td>{{ project.startOfWork | date : "mediumDate" }}</td>
+        <td>{{ project.endOfWork | date : "mediumDate" }}</td>
+        <td>
+          <button class="edit-button" (click)="editDescription(project)">
+            Edit
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <div *ngIf="flag === true" class="description-container">
+    <form class="skill-form" (submit)="updateDescription()">
+      <div class="input">
+        <label>Project description</label>
+        <input type="text" name="name" [(ngModel)]="project.workDescription" />
+      </div>
+      <button class="update-button" type="submit">Edit Description</button>
+    </form>
+  </div>
+</div>

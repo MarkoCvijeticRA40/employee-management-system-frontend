@@ -1,0 +1,64 @@
+.profile-info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.table {
+    text-align: center;
+    border: 1px solid;
+}
+
+.table th,
+table td {
+    position: relative;
+    border: 1px solid;
+}
+
+.button {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: green;
+}
+
+.delete-button {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: red;
+}
+
+.skill-form {
+
+}
+
+.input {
+    display: flex;
+    flex-direction: column;
+}
+
+.input input {
+    height: 30px;
+    width: 200px;
+    border-radius: 10px;
+    padding-left: 5%;
+    padding-right: 5%;
+}
+
+.edit-button {
+    margin-top: 10px;
+    background-color: green;
+    width: 50%;
+    height: 30px;
+}
+
+.download-button {
+    margin-top: 10px;
+    height: 30px;
+    border-radius: 10px;
+}

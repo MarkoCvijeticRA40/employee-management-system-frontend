@@ -5,8 +5,13 @@
         <table id="table1" class="mat-table">
           <tr>
             <th>Email</th>
-            <td><mat-form-field appearance="outline"><input matInput type="text" [(ngModel)]="currentUser.email" /></mat-form-field></td>
+            <td>
+              <mat-form-field appearance="outline">
+                <input matInput type="text" [(ngModel)]="currentUser.email" [disabled]="true" />
+              </mat-form-field>
+            </td>
           </tr>
+          
   
           <tr>
             <th>Password</th>

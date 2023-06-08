@@ -38,16 +38,20 @@ export class EditProfileComponent implements OnInit {
         this.isEmpty(this.currentUser.address.city) ||
         this.isEmpty(this.currentUser.address.country) ||
         this.isEmpty(this.currentUser.phoneNum) ||
-        this.isEmpty(this.currentUser.title)) 
-    { 
+        this.isEmpty(this.currentUser.title)) {
       alert('Please fill in all fields.');
-        return;    
-    }
-    else {
+      return;
+    } else {
       this.userService.updateUser(this.currentUser).subscribe(res => {
         this.currentUser = res;
-          alert("User profile successfully updated.");
+        alert("User profile successfully updated.");
+        this.userService.getById(this.accountService.currentUser.id).subscribe(updatedUser => {
+          this.currentUser = updatedUser;
+        });
+      }, error => {
+        alert("Failed to update user profile.");
       });
     }
   }
+  
 }

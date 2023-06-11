@@ -11,8 +11,8 @@ import { DatePipe } from '@angular/common';
 })
 export class SearchUsersComponent implements OnInit {
 
-  startDate!: Date;
-  endDate!: Date;
+  startDate!: any;
+  endDate!: any;
   email: string = '';
   name: string = '';
   lastname: string = '';
@@ -28,9 +28,6 @@ export class SearchUsersComponent implements OnInit {
   displayedColumns: string[] = ['name', 'lastname', 'email', 'date', 'addresses', 'phoneNum', 'title'];
 
   ngOnInit(): void {
-    this.startDate = new Date();
-    this.endDate = new Date();
-    this.startDate.setDate(this.endDate.getDate() - 1);
     this.userService.findByRoleName("Software engineer").subscribe(res => {
       this.engineers = res.payload.ArrayList;
         this.allEngineers = this.engineers;
@@ -38,7 +35,7 @@ export class SearchUsersComponent implements OnInit {
   }
 
   public search(): void {
-    if (this.isEmailValid() && this.isNameValid() && this.isLastnameValid()) {
+    if (this.isEmailValid() && this.isNameValid() && this.isLastnameValid() && this.isDateRangePicked()) {
       alert("You must enter some search criteria!");
         this.engineers = this.allEngineers;
     } 
@@ -51,33 +48,43 @@ export class SearchUsersComponent implements OnInit {
         alert("Some of the dates are in the future!");
         this.engineers = this.allEngineers;
       } else {
+        this.checkInput();
         this.startDate.setHours(0, 0, 0, 1);
         this.endDate.setHours(23, 59, 59, 998);
-        this.checkInput();
         this.userService.searchEngineers(this.email, this.name, this.lastname, this.startDate.toString(), this.endDate.toString()).subscribe(res => {
             this.engineers = res.payload.ArrayList;
-            /*this.email = '';
+            this.email = '';
             this.name = '';
             this.lastname = '';
-            this.startDate = new Date();
-            this.endDate = new Date();*/
+            this.startDate = undefined;
+            this.endDate = undefined;
         });
       }
     }
   }
 
   private checkInput() {
-    if(this.email === '') {
+    if (this.email === '') {
       this.email = '-';
     }
-    if(this.name === ''){
+    if (this.name === '') {
       this.name = '-';
     }
-    if(this.lastname === '') {
+    if (this.lastname === '') {
       this.lastname = '-';
     }
+    const dayAfterTomorrow = new Date();
+    dayAfterTomorrow.setDate(dayAfterTomorrow.getDate() + 1);
+  
+    if (this.startDate === undefined || isNaN(this.startDate)) {
+      this.startDate = dayAfterTomorrow;
+    }
+  
+    if (this.endDate === undefined || isNaN(this.endDate)) {
+      this.endDate = dayAfterTomorrow;
+    }
   }
-
+  
   private isEmailValid(): boolean {
     return this.email === '';
   }
@@ -90,17 +97,21 @@ export class SearchUsersComponent implements OnInit {
     return this.lastname === '';
   }
 
+  isDateRangePicked(): boolean {
+    return (this.startDate === undefined || this.endDate === undefined);
+  }
+
   formatDate(date: any): string {
     if (date && typeof date === 'string') {
       const formattedDate = new Date(date);
       const day = formattedDate.getDate();
       const month = formattedDate.getMonth() + 1; // Months are zero-based
       const year = formattedDate.getFullYear();
-      return `${day}/${month}/${year}`;
+      return `${month}/${day}/${year}`;
     }
     return '';
   }
-  
+ 
   // Function to create a user
   createUser() {
     this.userService.registerUser(this.user).subscribe(res => {

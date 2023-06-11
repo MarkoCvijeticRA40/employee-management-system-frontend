@@ -56,8 +56,8 @@ export class UserService {
     return this.http.get<any>(this.apiHost + 'users/rolename', { params });
   }
 
-  getEnabled(): Observable<any[]> {
-    return this.http.get<any[]>(this.apiHost + 'users/enabled', {
+  getWithStartDate(): Observable<any[]> {
+    return this.http.get<any[]>(this.apiHost + 'users/startdate', {
       headers: this.headers,
     });
   }
@@ -102,6 +102,18 @@ export class UserService {
 
   sendRegistrationRequest(request: any): Observable<any> {
     return this.http.post<any>(this.apiHost + 'requests/register', request, {
+      headers: this.headers,
+    });
+  }
+
+  block(user: any): Observable<any> {
+    return this.http.put<any>(this.apiHost + 'users/block', user, {
+      headers: this.headers,
+    });
+  }
+
+  unblock(user: any): Observable<any> {
+    return this.http.put<any>(this.apiHost + 'users/unblock', user, {
       headers: this.headers,
     });
   }

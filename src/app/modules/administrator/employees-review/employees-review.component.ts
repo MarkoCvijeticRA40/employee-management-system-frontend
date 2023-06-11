@@ -15,10 +15,10 @@ export class EmployeesReviewComponent implements OnInit {
 
   constructor(private userService: UserService, private router: Router, private datePipe: DatePipe) { }
 
-  displayedColumns: string[] = ['name', 'lastname', 'email', 'addresses', 'phoneNum', 'title', 'roleNames'];
+  displayedColumns: string[] = ['name', 'lastname', 'email', 'addresses', 'phoneNum', 'title', 'roleNames', 'actions'];
 
   ngOnInit(): void {
-    this.userService.getEnabled().subscribe(res => {
+    this.userService.getWithStartDate().subscribe(res => {
       this.employees = res;
     });
   }
@@ -29,5 +29,29 @@ export class EmployeesReviewComponent implements OnInit {
       return new Date(year, month - 1, day, hour, minute, second).toDateString();
     }
     return '';
+  }
+
+  blockEmployee(employee: User) {
+    employee.accountEnabled = false;
+    this.userService.block(employee).subscribe(
+      res => {
+        alert("User profile successfully blocked.");
+      },
+      error => {
+        alert("Failed to block user profile.");
+      }
+    );
+  }
+  
+  unblockEmployee(employee: User) {
+    employee.accountEnabled = true;
+    this.userService.unblock(employee).subscribe(
+      res => {
+        alert("User profile successfully unblocked.");
+      },
+      error => {
+        alert("Failed to unblock user profile.");
+      }
+    );
   }
 }

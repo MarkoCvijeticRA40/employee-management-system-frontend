@@ -1,6 +1,5 @@
 import { Address } from "./address";
 
-///MORA DA SE STAVI accountEnabled iako je na backu isAccountEnalbed,nece da pristupi drugacije
 export class User {
 
     id : number = 0;
@@ -30,5 +29,4 @@ export class User {
             this.accountEnabled = obj.accountEnabled;
         }
     }
-
 }

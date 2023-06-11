@@ -30,7 +30,7 @@ export class SearchUsersComponent implements OnInit {
   ngOnInit(): void {
     this.startDate = new Date();
     this.endDate = new Date();
-    this.endDate.setDate(this.endDate.getDate() + 1);
+    this.startDate.setDate(this.endDate.getDate() - 1);
     this.userService.findByRoleName("Software engineer").subscribe(res => {
       this.engineers = res.payload.ArrayList;
         this.allEngineers = this.engineers;
@@ -39,17 +39,21 @@ export class SearchUsersComponent implements OnInit {
 
   public search(): void {
     if (this.isEmailValid() && this.isNameValid() && this.isLastnameValid()) {
-      alert("You must fill all fields!");
+      alert("You must enter some search criteria!");
         this.engineers = this.allEngineers;
-    } else {
+    } 
+    else {
       const today = new Date();
-      today.setHours(0, 0, 0, 0);
+      today.setHours(23, 59, 59, 999);
 
-      if (this.startDate >= today || this.endDate >= today) {
+      if (this.startDate > today || this.endDate > today) {
         // Both dates are in the future or today
-        alert("Please select past dates for the date range.");
+        alert("Some of the dates are in the future!");
         this.engineers = this.allEngineers;
       } else {
+        this.startDate.setHours(0, 0, 0, 1);
+        this.endDate.setHours(23, 59, 59, 998);
+        this.checkInput();
         this.userService.searchEngineers(this.email, this.name, this.lastname, this.startDate.toString(), this.endDate.toString()).subscribe(res => {
             this.engineers = res.payload.ArrayList;
             /*this.email = '';
@@ -59,6 +63,18 @@ export class SearchUsersComponent implements OnInit {
             this.endDate = new Date();*/
         });
       }
+    }
+  }
+
+  private checkInput() {
+    if(this.email === '') {
+      this.email = '-';
+    }
+    if(this.name === ''){
+      this.name = '-';
+    }
+    if(this.lastname === '') {
+      this.lastname = '-';
     }
   }
 

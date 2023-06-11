@@ -36,7 +36,11 @@ export class ProjectsReviewComponent implements OnInit {
     project.users.push(...users);
     this.selectedUsers = [];
     this.projectService.updateProject(project).subscribe(res => {
-      alert("Project successfully updated.");
+      if (res.report.valid == true) {
+        alert("Project successfully updated.");
+      } else {
+        alert("You have not successfully updated a project.");
+      }
     });
   }
 }  

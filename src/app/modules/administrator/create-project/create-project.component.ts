@@ -23,17 +23,16 @@ export class CreateProjectComponent implements OnInit {
     this.userService.getAllPotentialWorkers().subscribe((res) => {
       this.employees = res;
     });
-    /*
-    this.project.name = "Srednja skola";
-    this.project.duration = "Pola godine";*/
   }
 
   create() {
     this.projectService.createProject(this.project).subscribe((res) => {
-      this.project = res;
-      this.project = new Project();
-      alert('Project successfully created.');
-      this.project = new Project();
+      if (res.report.valid == true) {
+        alert('Project successfully created.');
+        this.project = new Project();
+      } else {
+        alert("You have not successfully created a project.");
+      }
     });
-  }
+  }  
 }

@@ -45,7 +45,7 @@ const routes: Routes = [
   {
     path: 'administrator',
     component: HomePageComponent,
-    canActivate: [AdministratorAuthGuard],
+    //canActivate: [AdministratorAuthGuard],
     //canActivate: [RoleGuardService], data: {expectedRole: 'Administrator'},
     children: [
       //{
@@ -77,7 +77,7 @@ const routes: Routes = [
   {
     path: 'projectmanager',
     component: ProjectManagerHomeComponent,
-    canActivate: [ProjectManagerAuthGuard],
+    //canActivate: [ProjectManagerAuthGuard],
     children: [
       { path: 'refresh-token', component: RefreshTokenComponent },
       { path: 'profile', component: ProfileInfoComponent },
@@ -93,7 +93,7 @@ const routes: Routes = [
   {
     path: 'hrmanager',
     component: HrManagerHomeComponent,
-    canActivate: [HrManagerAuthGuard],
+    //canActivate: [HrManagerAuthGuard],
     children: [{ path: 'refresh-token', component: RefreshTokenComponent }],
   },
   {
@@ -103,7 +103,7 @@ const routes: Routes = [
   {
     path: 'softwareengineer',
     component: SoftwareEngineerHomeComponent,
-    canActivate: [SoftwareEngineerAuthGuard],
+    //canActivate: [SoftwareEngineerAuthGuard],
     children: [
       { path: 'refresh-token', component: RefreshTokenComponent },
       { path: 'profile', component: EngineerProfileInfoComponent },
@@ -115,7 +115,7 @@ const routes: Routes = [
   {
     path: 'first/login',
     component: FirstLoginComponent,
-    canActivate: [AdministratorNotEnabledAuthGuard],
+    //canActivate: [AdministratorNotEnabledAuthGuard],
   },
   {
     path: '',

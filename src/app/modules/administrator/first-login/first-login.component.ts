@@ -33,7 +33,7 @@ export class FirstLoginComponent implements OnInit {
         this.currentUser.startOfWork = new Date();
         this.userService.updateUser(this.currentUser).subscribe(res => {
           alert("You have changed password successfully!");
-            this.router.navigate(['/home/edit/profile']);
+            this.router.navigate(['/login']);
         }) 
       } 
       else {
@@ -51,7 +51,7 @@ export class FirstLoginComponent implements OnInit {
 
   public GoBack() {
     //na login kad se napravi
-    this.router.navigate(['/no/access']);
+    this.router.navigate(['/login']);
   }
 
   private isInputValid(): boolean {

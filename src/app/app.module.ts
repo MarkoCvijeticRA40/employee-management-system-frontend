@@ -52,6 +52,8 @@ import { AdministratorAuthGuard } from './authguard/administrator-auth-guard';
 import { ProfileInfoComponent } from './modules/projectManager/profile-info/profile-info.component';
 import { EngineerProfileInfoComponent } from './modules/softwareEngineer/engineer-profile-info/engineer-profile-info.component';
 import { AddSkillComponent } from './modules/softwareEngineer/add-skill/add-skill.component';
+import { HrManagerEditProfileComponent } from './modules/hrManager/hr-manager-edit-profile/hr-manager-edit-profile.component';
+import { HrManagerChangePasswordComponent } from './modules/hrManager/hr-manager-change-password/hr-manager-change-password.component';
 
 @NgModule({
   declarations: [
@@ -85,6 +87,8 @@ import { AddSkillComponent } from './modules/softwareEngineer/add-skill/add-skil
     ProfileInfoComponent,
     EngineerProfileInfoComponent,
     AddSkillComponent,
+    HrManagerEditProfileComponent,
+    HrManagerChangePasswordComponent
   ],
   imports: [
     BrowserModule,

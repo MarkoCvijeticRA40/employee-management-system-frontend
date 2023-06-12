@@ -117,4 +117,14 @@ export class UserService {
       headers: this.headers,
     });
   }
+
+  editHrManagerAccount(id: any, user: User): Observable<any> {
+    return this.http.put<any>(
+      this.apiHost + 'users/' + id + '/hrmanager',
+      user,
+      {
+        headers: this.headers,
+      }
+    );
+  }
 }

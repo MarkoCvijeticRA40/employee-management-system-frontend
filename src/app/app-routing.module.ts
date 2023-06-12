@@ -36,6 +36,8 @@ import { ProjectManagerEditProjectsComponent } from './modules/projectManager/pr
 import { ProfileInfoComponent } from './modules/projectManager/profile-info/profile-info.component';
 import { EngineerProfileInfoComponent } from './modules/softwareEngineer/engineer-profile-info/engineer-profile-info.component';
 import { AddSkillComponent } from './modules/softwareEngineer/add-skill/add-skill.component';
+import { HrManagerEditProfileComponent } from './modules/hrManager/hr-manager-edit-profile/hr-manager-edit-profile.component';
+import { HrManagerChangePasswordComponent } from './modules/hrManager/hr-manager-change-password/hr-manager-change-password.component';
 
 const routes: Routes = [
   {
@@ -94,7 +96,11 @@ const routes: Routes = [
     path: 'hrmanager',
     component: HrManagerHomeComponent,
     //canActivate: [HrManagerAuthGuard],
-    children: [{ path: 'refresh-token', component: RefreshTokenComponent }],
+    children: [
+      { path: 'refresh-token', component: RefreshTokenComponent },
+      { path: 'edit-profile', component: HrManagerEditProfileComponent},
+      { path: 'change-password',component: HrManagerChangePasswordComponent}
+    ],
   },
   {
     path: 'softwareengineer/welcome/:ajwt/:rjwt/:email',

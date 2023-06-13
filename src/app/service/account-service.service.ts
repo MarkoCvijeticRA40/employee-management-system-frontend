@@ -83,5 +83,13 @@ export class AccountService {
     });
   }
 
+  forgotPassword(email: String): Observable<any>{
+    return this.http.put<any>(this.apiHost + 'auth/forgot-password/' + email , {
+      headers: this.headers,
+    });
+  }
+
+
+
   
 }

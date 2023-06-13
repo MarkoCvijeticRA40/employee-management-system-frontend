@@ -38,6 +38,7 @@ import { EngineerProfileInfoComponent } from './modules/softwareEngineer/enginee
 import { AddSkillComponent } from './modules/softwareEngineer/add-skill/add-skill.component';
 import { HrManagerEditProfileComponent } from './modules/hrManager/hr-manager-edit-profile/hr-manager-edit-profile.component';
 import { HrManagerChangePasswordComponent } from './modules/hrManager/hr-manager-change-password/hr-manager-change-password.component';
+import { ForgotPasswordComponent } from './modules/pages/forgot-password/forgot-password.component';
 
 const routes: Routes = [
   {
@@ -59,10 +60,7 @@ const routes: Routes = [
       { path: 'projects/review', component: ProjectsReviewComponent },
       { path: 'project/create', component: CreateProjectComponent },
       { path: 'edit/profile', component: EditProfileComponent },
-      {
-        path: 'create/administrator',
-        component: RegisterAdministratorComponent,
-      },
+      { path: 'create/administrator', component: RegisterAdministratorComponent },
       { path: 'create/project', component: CreateProjectComponent },
       { path: 'change/password', component: ChangePasswordComponent },
       { path: 'list-requests', component: ListRequestsComponent },
@@ -130,6 +128,7 @@ const routes: Routes = [
       { path: 'login', component: LoginComponent },
       { path: 'register', component: RegisterUserComponent },
       { path: 'passwordless-login', component: PaswordlessLoginComponent },
+      { path: 'forgot-password', component : ForgotPasswordComponent}
     ],
   },
   { path: '', redirectTo: '', pathMatch: 'full' }, // Preusmeravanje na "first/login" za neautorizovane korisnike

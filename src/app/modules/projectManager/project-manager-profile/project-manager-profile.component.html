@@ -9,7 +9,10 @@
         </div>
         <div class="input">
           <label>Password</label>
-          <input type="password" name="password" [(ngModel)]="user.password" />
+          <input type="password" name="password" [(ngModel)]="user.password" [formControl]="requiredPasswordControl" />
+          <div *ngIf="requiredPasswordControl.invalid && requiredPasswordControl.touched" class="error-message">
+            Password must contain at least 8 characters, including one lowercase letter, one uppercase letter, one digit, and one special character.
+          </div>
         </div>
         <div class="input">
           <label>Name</label>
@@ -35,11 +38,7 @@
         </div>
         <div class="input">
           <label>Country</label>
-          <input
-            type="text"
-            name="country"
-            [(ngModel)]="user.address.country"
-          />
+          <input type="text" name="country" [(ngModel)]="user.address.country" />
         </div>
         <div class="input">
           <label>Title</label>

@@ -47,7 +47,7 @@ export class LoginComponent implements OnInit {
         else if (this.currentUser.roleNames[0] === 'Project manager') {
           this.router.navigate(['projectmanager']);
         }        
-        else if (this.currentUser.role.name === 'HR manager') {
+        else if (this.currentUser.roleNames[0] === 'HR manager') {
           this.router.navigate(['hrmanager']);
         }  
       });

@@ -17,6 +17,7 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { LoginComponent } from './login/login.component';
 import { RegisterUserComponent } from './register-user/register-user.component';
 import { PaswordlessLoginComponent } from './paswordless-login/paswordless-login.component';
+import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 
 /*const routes: Routes = [
   {
@@ -33,7 +34,8 @@ import { PaswordlessLoginComponent } from './paswordless-login/paswordless-login
   
     LoginComponent,
        RegisterUserComponent,
-       PaswordlessLoginComponent
+       PaswordlessLoginComponent,
+       ForgotPasswordComponent
   ],
   imports: [
     CommonModule,

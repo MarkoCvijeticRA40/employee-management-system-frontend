@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { User } from 'src/app/model/user';
 import { AccountService } from 'src/app/service/account-service.service';
@@ -28,16 +29,23 @@ export class ProjectManagerProfileComponent implements OnInit {
 
   public editProfile() {
     if (this.validateForm()) {
-      this.userService
-        .editProjectManagerAccount(this.user.id, this.user)
-        .subscribe((res) => {
+      if (this.requiredPasswordControl.valid) {
+        this.userService.editProjectManagerAccount(this.user.id, this.user).subscribe((res) => {
           alert('Project manager account is edited!');
           this.router.navigateByUrl('projectmanager/profile');
         });
+      } else {
+        alert('Password does not meet the requirements!');
+      }
     } else {
-      alert('Please, fill in all fields!');
+      alert('Please fill in all fields!');
     }
   }
+
+  requiredPasswordControl = new FormControl('', [
+    Validators.required,
+    Validators.pattern(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@#$%^&+=])(?=\S+$).{8,}$/),
+  ]);
 
   private validateForm(): boolean {
     if (

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { User } from 'src/app/model/user';
 import { AccountService } from 'src/app/service/account-service.service';
@@ -27,17 +28,24 @@ export class SoftwareEngineerProfileComponent implements OnInit {
   }
 
   public editProfile() {
-    if (this.validateForm()) {
-      this.userService
-        .editProjectManagerAccount(this.user.id, this.user)
-        .subscribe((res) => {
-          alert('Software engineer account is edited!');
-          this.router.navigateByUrl('softwareengineer/profile');
-        });
+    if (this.validateForm() && this.requiredPasswordControl.valid) {
+      this.userService.editSoftwareEngineerAccount(this.user.id, this.user).subscribe((res) => {
+        alert('Software engineer account is edited!');
+        this.router.navigateByUrl('softwareengineer/profile');
+      });
     } else {
-      alert('Please, fill in all fields!');
+      if (!this.requiredPasswordControl.valid) {
+        alert('Password does not meet the requirements!');
+      } else {
+        alert('Please fill in all fields!');
+      }
     }
   }
+  
+  requiredPasswordControl = new FormControl('', [
+    Validators.required,
+    Validators.pattern(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@#$%^&+=])(?=\S+$).{8,}$/),
+  ]);
 
   private validateForm(): boolean {
     if (

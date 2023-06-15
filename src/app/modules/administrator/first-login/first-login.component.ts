@@ -29,24 +29,28 @@ export class FirstLoginComponent implements OnInit {
   public UpdatePassword() {
     if (this.isInputValid()) {
       if (this.isPassConfirmed()) {
-        this.currentUser.password = this.password;
-        this.currentUser.startOfWork = new Date();
-        this.userService.updateUser(this.currentUser).subscribe(res => {
-          alert("You have changed password successfully!");
-            this.router.navigate(['/login']);
-        }) 
-      } 
-      else {
+        if (this.requiredPasswordControl.valid) { // Provjera validnosti lozinke prema validatoru
+          this.currentUser.startOfWork = new Date();
+          this.currentUser.password = this.password;
+          this.userService.updateUser(this.currentUser).subscribe(res => {
+            alert("You have changed password successfully!");
+            this.GoBack();
+          }) 
+        } else {
+          alert("Password does not meet the requirements!"); // Lozinka nije valjana prema validatoru
+          this.confirmationPass = '';
+          this.password = '';
+        }
+      } else {
         alert("Passwords are different!");
         this.confirmationPass = '';
         this.password = '';
       }
-    }
-    else {
+    } else {
       alert("Input is not in valid format!");
       this.confirmationPass = '';
       this.password = '';
-      }
+    }
   }
 
   public GoBack() {
@@ -65,6 +69,7 @@ export class FirstLoginComponent implements OnInit {
   
   requiredPasswordControl = new FormControl('', [
     Validators.required,
+    Validators.pattern(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@#$%^&+=])(?=\S+$).{8,}$/),
   ]);
 
   requiredConfirmationPasswordControl = new FormControl('', [

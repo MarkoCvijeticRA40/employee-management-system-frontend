@@ -1,0 +1,11 @@
+.mat-button-toggle-group {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 6vh;
+  }
+  
+  .mat-button-toggle.mat-button-toggle-primary {
+    background-color: #2196f3 !important;
+    color: #ffffff !important;
+  }

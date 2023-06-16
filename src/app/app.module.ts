@@ -54,6 +54,11 @@ import { EngineerProfileInfoComponent } from './modules/softwareEngineer/enginee
 import { AddSkillComponent } from './modules/softwareEngineer/add-skill/add-skill.component';
 import { HrManagerEditProfileComponent } from './modules/hrManager/hr-manager-edit-profile/hr-manager-edit-profile.component';
 import { HrManagerChangePasswordComponent } from './modules/hrManager/hr-manager-change-password/hr-manager-change-password.component';
+import { AdministratorTotpStatusComponent } from './modules/administrator/administrator-totp-status/administrator-totp-status.component';
+import { HrmanagerTotpStatusComponent } from './modules/hrManager/hrmanager-totp-status/hrmanager-totp-status.component';
+import { ProjectManagerTotpStatusComponent } from './modules/projectManager/project-manager-totp-status/project-manager-totp-status.component';
+import { SoftwareEngineerTotpStatusComponent } from './modules/softwareEngineer/software-engineer-totp-status/software-engineer-totp-status.component';
+import { MatButtonToggleModule } from '@angular/material/button-toggle';
 
 @NgModule({
   declarations: [
@@ -88,7 +93,11 @@ import { HrManagerChangePasswordComponent } from './modules/hrManager/hr-manager
     EngineerProfileInfoComponent,
     AddSkillComponent,
     HrManagerEditProfileComponent,
-    HrManagerChangePasswordComponent
+    HrManagerChangePasswordComponent,
+    AdministratorTotpStatusComponent,
+    HrmanagerTotpStatusComponent,
+    ProjectManagerTotpStatusComponent,
+    SoftwareEngineerTotpStatusComponent
   ],
   imports: [
     BrowserModule,
@@ -126,6 +135,7 @@ import { HrManagerChangePasswordComponent } from './modules/hrManager/hr-manager
     MatInputModule,
     MatToolbarModule,
     ReactiveFormsModule,
+    MatButtonToggleModule,
   ],
   providers: [
     DatePipe,

@@ -13,6 +13,8 @@ export class User {
     roleNames : string[] = [];
     startOfWork : Date = new Date();
     accountEnabled : boolean = false;
+    totp : String = '';
+    totpActivated : boolean = false;
 
     public constructor(obj?: any) {
         if (obj) {

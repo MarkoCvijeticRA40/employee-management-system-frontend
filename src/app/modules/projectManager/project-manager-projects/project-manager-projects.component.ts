@@ -22,7 +22,7 @@ export class ProjectManagerProjectsComponent implements OnInit {
       .findByUserId(this.accountService.currentUser.id)
       .subscribe((res) => {
         this.projects = res.payload.ArrayList;
-        this.convertDate();
+        //this.convertDate();
         this.findEngineers();
       });
   }

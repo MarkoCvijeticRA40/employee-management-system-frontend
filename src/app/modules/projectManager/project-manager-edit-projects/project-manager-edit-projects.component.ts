@@ -34,7 +34,7 @@ export class ProjectManagerEditProjectsComponent implements OnInit {
       .findByUserId(this.accountService.currentUser.id)
       .subscribe((res) => {
         this.projects = res.payload.ArrayList;
-        this.convertDate();
+        //this.convertDate();
       });
 
     this.userService.getAllPotentialWorkers().subscribe((res) => {

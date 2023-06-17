@@ -39,10 +39,6 @@ import { AddSkillComponent } from './modules/softwareEngineer/add-skill/add-skil
 import { HrManagerEditProfileComponent } from './modules/hrManager/hr-manager-edit-profile/hr-manager-edit-profile.component';
 import { HrManagerChangePasswordComponent } from './modules/hrManager/hr-manager-change-password/hr-manager-change-password.component';
 import { ForgotPasswordComponent } from './modules/pages/forgot-password/forgot-password.component';
-import { AdministratorTotpStatusComponent } from './modules/administrator/administrator-totp-status/administrator-totp-status.component';
-import { ProjectManagerTotpStatusComponent } from './modules/projectManager/project-manager-totp-status/project-manager-totp-status.component';
-import { HrmanagerTotpStatusComponent } from './modules/hrManager/hrmanager-totp-status/hrmanager-totp-status.component';
-import { SoftwareEngineerTotpStatusComponent } from './modules/softwareEngineer/software-engineer-totp-status/software-engineer-totp-status.component';
 
 const routes: Routes = [
   {
@@ -70,7 +66,6 @@ const routes: Routes = [
       { path: 'list-requests', component: ListRequestsComponent },
       { path: 'refresh-token', component: RefreshTokenComponent },
       { path: 'modify-permission', component: ModifyPermissionsComponent },
-      { path: 'totp-status' , component : AdministratorTotpStatusComponent}
       //]
       //}
     ],
@@ -88,9 +83,7 @@ const routes: Routes = [
       { path: 'profile', component: ProfileInfoComponent },
       { path: 'edit-profile', component: ProjectManagerProfileComponent },
       { path: 'projects', component: ProjectManagerProjectsComponent },
-      { path: 'edit-projects', component: ProjectManagerEditProjectsComponent },
-      { path: 'totp-status' , component : ProjectManagerTotpStatusComponent }
-      
+      { path: 'edit-projects', component: ProjectManagerEditProjectsComponent },   
     ],
   },
   {
@@ -105,7 +98,6 @@ const routes: Routes = [
       { path: 'refresh-token', component: RefreshTokenComponent },
       { path: 'edit-profile', component: HrManagerEditProfileComponent},
       { path: 'change-password',component: HrManagerChangePasswordComponent},
-      { path: 'totp-status' , component : HrmanagerTotpStatusComponent },
     ],
   },
   {
@@ -122,7 +114,6 @@ const routes: Routes = [
       { path: 'edit-profile', component: SoftwareEngineerProfileComponent },
       { path: 'projects', component: SoftwareEngineerProjectsComponent },
       { path: 'add-skill', component: AddSkillComponent },
-      { path: 'totp-status' , component : SoftwareEngineerTotpStatusComponent }
     ],
   },
   {

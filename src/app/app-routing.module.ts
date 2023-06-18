@@ -39,7 +39,10 @@ import { AddSkillComponent } from './modules/softwareEngineer/add-skill/add-skil
 import { HrManagerEditProfileComponent } from './modules/hrManager/hr-manager-edit-profile/hr-manager-edit-profile.component';
 import { HrManagerChangePasswordComponent } from './modules/hrManager/hr-manager-change-password/hr-manager-change-password.component';
 import { ForgotPasswordComponent } from './modules/pages/forgot-password/forgot-password.component';
+import { NotificationsComponent } from './modules/administrator/notifications/notifications.component';
+import { NewNotificationsComponent } from './modules/administrator/new-notifications/new-notifications.component';
 import { TwoFactorAuthenticationLoginComponent } from './modules/pages/two-factor-authentication-login/two-factor-authentication-login.component';
+
 
 const routes: Routes = [
   {
@@ -67,6 +70,8 @@ const routes: Routes = [
       { path: 'list-requests', component: ListRequestsComponent },
       { path: 'refresh-token', component: RefreshTokenComponent },
       { path: 'modify-permission', component: ModifyPermissionsComponent },
+      { path: 'notifications', component: NotificationsComponent },
+      { path: 'new-notifications', component: NewNotificationsComponent },
       //]
       //}
     ],

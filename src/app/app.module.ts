@@ -54,7 +54,10 @@ import { EngineerProfileInfoComponent } from './modules/softwareEngineer/enginee
 import { AddSkillComponent } from './modules/softwareEngineer/add-skill/add-skill.component';
 import { HrManagerEditProfileComponent } from './modules/hrManager/hr-manager-edit-profile/hr-manager-edit-profile.component';
 import { HrManagerChangePasswordComponent } from './modules/hrManager/hr-manager-change-password/hr-manager-change-password.component';
+import { NotificationsComponent } from './modules/administrator/notifications/notifications.component';
+import { NewNotificationsComponent } from './modules/administrator/new-notifications/new-notifications.component';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
+
 
 @NgModule({
   declarations: [
@@ -90,6 +93,8 @@ import { MatButtonToggleModule } from '@angular/material/button-toggle';
     AddSkillComponent,
     HrManagerEditProfileComponent,
     HrManagerChangePasswordComponent,
+    NotificationsComponent,
+    NewNotificationsComponent
   ],
   imports: [
     BrowserModule,

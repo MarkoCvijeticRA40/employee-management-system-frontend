@@ -89,7 +89,18 @@ export class AccountService {
     });
   }
 
-
-
-  
+  twoFactorlogin(data: any, oneTimeCode: number): Observable<any> {
+    return this.http
+      .post<any>(this.apiHost + 'auth/two-factor/login', data, { params: { oneTimeCode: oneTimeCode.toString() }, headers: this.headers })
+      .pipe(
+        map((res) => {
+          console.log(res);
+          console.log('Login success');
+          this.access_token = res.access_token;
+          localStorage.setItem('jwt', res.access_token);
+          localStorage.setItem('rjwt', res.refresh_token);
+          this.loggedIn = true;
+        })
+      );
+  }
 }

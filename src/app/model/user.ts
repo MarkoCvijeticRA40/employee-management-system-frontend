@@ -13,6 +13,7 @@ export class User {
     roleNames : string[] = [];
     startOfWork : Date = new Date();
     accountEnabled : boolean = false;
+    secret_key : String = '';
 
     public constructor(obj?: any) {
         if (obj) {
@@ -27,6 +28,7 @@ export class User {
             this.roleNames = obj.roleNames;
             this.startOfWork = obj.startOfWork;
             this.accountEnabled = obj.accountEnabled;
+            this.secret_key = obj.secret_key;
         }
     }
 }

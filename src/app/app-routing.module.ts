@@ -41,6 +41,8 @@ import { HrManagerChangePasswordComponent } from './modules/hrManager/hr-manager
 import { ForgotPasswordComponent } from './modules/pages/forgot-password/forgot-password.component';
 import { NotificationsComponent } from './modules/administrator/notifications/notifications.component';
 import { NewNotificationsComponent } from './modules/administrator/new-notifications/new-notifications.component';
+import { TwoFactorAuthenticationLoginComponent } from './modules/pages/two-factor-authentication-login/two-factor-authentication-login.component';
+
 
 const routes: Routes = [
   {
@@ -87,7 +89,7 @@ const routes: Routes = [
       { path: 'profile', component: ProfileInfoComponent },
       { path: 'edit-profile', component: ProjectManagerProfileComponent },
       { path: 'projects', component: ProjectManagerProjectsComponent },
-      { path: 'edit-projects', component: ProjectManagerEditProjectsComponent },
+      { path: 'edit-projects', component: ProjectManagerEditProjectsComponent },   
     ],
   },
   {
@@ -101,7 +103,7 @@ const routes: Routes = [
     children: [
       { path: 'refresh-token', component: RefreshTokenComponent },
       { path: 'edit-profile', component: HrManagerEditProfileComponent},
-      { path: 'change-password',component: HrManagerChangePasswordComponent}
+      { path: 'change-password',component: HrManagerChangePasswordComponent},
     ],
   },
   {
@@ -132,7 +134,8 @@ const routes: Routes = [
       { path: 'login', component: LoginComponent },
       { path: 'register', component: RegisterUserComponent },
       { path: 'passwordless-login', component: PaswordlessLoginComponent },
-      { path: 'forgot-password', component : ForgotPasswordComponent}
+      { path: 'forgot-password', component : ForgotPasswordComponent},
+      { path: 'two-factor-login', component : TwoFactorAuthenticationLoginComponent}
     ],
   },
   { path: '', redirectTo: '', pathMatch: 'full' }, // Preusmeravanje na "first/login" za neautorizovane korisnike

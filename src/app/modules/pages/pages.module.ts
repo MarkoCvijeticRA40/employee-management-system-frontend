@@ -18,6 +18,7 @@ import { LoginComponent } from './login/login.component';
 import { RegisterUserComponent } from './register-user/register-user.component';
 import { PaswordlessLoginComponent } from './paswordless-login/paswordless-login.component';
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
+import { TwoFactorAuthenticationLoginComponent } from './two-factor-authentication-login/two-factor-authentication-login.component';
 
 /*const routes: Routes = [
   {
@@ -35,7 +36,8 @@ import { ForgotPasswordComponent } from './forgot-password/forgot-password.compo
     LoginComponent,
        RegisterUserComponent,
        PaswordlessLoginComponent,
-       ForgotPasswordComponent
+       ForgotPasswordComponent,
+       TwoFactorAuthenticationLoginComponent
   ],
   imports: [
     CommonModule,

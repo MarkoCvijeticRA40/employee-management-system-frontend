@@ -54,6 +54,8 @@ import { EngineerProfileInfoComponent } from './modules/softwareEngineer/enginee
 import { AddSkillComponent } from './modules/softwareEngineer/add-skill/add-skill.component';
 import { HrManagerEditProfileComponent } from './modules/hrManager/hr-manager-edit-profile/hr-manager-edit-profile.component';
 import { HrManagerChangePasswordComponent } from './modules/hrManager/hr-manager-change-password/hr-manager-change-password.component';
+import { NotificationsComponent } from './modules/administrator/notifications/notifications.component';
+import { NewNotificationsComponent } from './modules/administrator/new-notifications/new-notifications.component';
 
 @NgModule({
   declarations: [
@@ -88,7 +90,9 @@ import { HrManagerChangePasswordComponent } from './modules/hrManager/hr-manager
     EngineerProfileInfoComponent,
     AddSkillComponent,
     HrManagerEditProfileComponent,
-    HrManagerChangePasswordComponent
+    HrManagerChangePasswordComponent,
+    NotificationsComponent,
+    NewNotificationsComponent
   ],
   imports: [
     BrowserModule,

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { LoginData } from 'src/app/model/login-data.model';
 import { TwoFactorAuthenticationLoginData } from 'src/app/model/two-factor-authentication-login';
 import { AccountService } from 'src/app/service/account-service.service';
 import { MyErrorStateMatcher } from '../login/login.component';
@@ -12,8 +13,9 @@ import { MyErrorStateMatcher } from '../login/login.component';
 })
 export class TwoFactorAuthenticationLoginComponent implements OnInit {
 
-  public data: TwoFactorAuthenticationLoginData = new TwoFactorAuthenticationLoginData();
+  public data: LoginData = new LoginData();
   public currentUser: any;
+  public oneTimeCode : number = 0;
 
   constructor(private accountService: AccountService, private router: Router) { }
 
@@ -21,7 +23,7 @@ export class TwoFactorAuthenticationLoginComponent implements OnInit {
   }
 
   public login() {
-    this.accountService.login(this.data).subscribe(res => {
+    this.accountService.twoFactorlogin(this.data,this.oneTimeCode).subscribe(res => {
       console.log(res);
       this.accountService.getMyInfo(this.data.email).subscribe(res => {
         this.accountService.currentUser = res.payload.User;
@@ -44,7 +46,7 @@ export class TwoFactorAuthenticationLoginComponent implements OnInit {
       });
     },
     error => {
-      alert("Incorrect username or password");
+      alert("Incorrect username,password or code!");
     }) 
   }
 

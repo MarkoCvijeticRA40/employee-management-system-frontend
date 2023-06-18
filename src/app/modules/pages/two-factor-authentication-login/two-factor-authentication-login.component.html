@@ -20,8 +20,8 @@
         </mat-form-field><br><br>
 
         <mat-form-field class="example-full-width" style="color: white;">
-            <input matInput placeholder="Two-Factor Authentication Code" [formControl]="twoFactorFormControl"
-                [errorStateMatcher]="matcher" [(ngModel)]="data.oneTimeCode">
+            <input matInput placeholder="Your code" [formControl]="twoFactorFormControl"
+                [errorStateMatcher]="matcher" [(ngModel)]="oneTimeCode">
             <mat-error *ngIf="twoFactorFormControl.hasError('required')">
                 Two-Factor Authentication Code is <strong>required</strong>
             </mat-error>
